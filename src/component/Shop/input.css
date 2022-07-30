@@ -1,0 +1,13 @@
+
+.input{
+  --place: capitalize;
+  --text: 1.375rem;
+  
+}
+.input::placeholder{
+
+  text-transform:  var(--place) ;
+  font-size:var(--text);
+  -webkit-text-size-adjust: var(--text);
+ 
+}

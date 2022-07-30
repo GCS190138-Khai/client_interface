@@ -1,0 +1,30 @@
+.arrow{
+  ::before{
+    content: "";
+    background: url("./arrow.png");
+    width: 1.2rem;
+    height: 1.3rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-self: center;
+  }
+}
+.arrowDetail{
+  ::before{
+ 
+   
+ 
+  content: " ";
+    display: block;
+    background: url("./arrowback.svg");
+    width: 1.3vw;
+    height: 2vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-self: center;
+      align-items: center;
+    
+  
+    
+  }
+}

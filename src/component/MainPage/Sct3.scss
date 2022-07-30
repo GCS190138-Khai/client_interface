@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,700;0,800;1,600&display=swap');
+.container33{
+    position: relative;
+    height: 110vh;
+    background:   #F7F3EE ;
+    width: 100%;
+    color: rgba(25, 25, 25, 1);
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+
+    .Upper{
+   
+        display: flex;
+        justify-content: space-between;
+        width: 98%;
+        align-items: center;
+        font-family: 'Be Vietnam Pro', sans-serif;
+      
+        .left_text{
+            font-weight:500;
+            font-size: 2.3vw;
+          
+        }
+        .right_text{
+            font-weight:800;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+        }
+    }
+    .wrap{
+      
+        cursor: url('../../Asset/Image/drag.svg') ,auto !important ;
+  
+        height: 80vh;
+        width: 98%;
+        display: flex;
+     
+        overflow-x: auto;
+       flex-wrap: nowrap;
+        .Lower{
+   
+            height: 62vh;
+            width: fit-content;
+            
+            overflow-x: auto;
+            display: flex;
+            justify-content: space-between;
+        
+            .upper_logo{
+             
+                min-width: fit-content;
+                
+                display: flex;
+                gap: 5.5vw;
+          
+            
+
+            }
+            .lower_logo{
+                min-width: fit-content;
+                
+                display: flex;
+                gap: 5.5vw;
+                align-items: flex-end;
+         
+            }
+        }
+    }
+ 
+  
+}
+

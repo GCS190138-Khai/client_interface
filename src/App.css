@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,700;0,800;1,600&display=swap');
+.App {
+  overflow: visible;
+ 
+}
+label > input[type="radio"] {
+  display: none;
+}
+label > input[type="radio"] + *::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+
+  width: 1.563rem;
+  height:1.563rem;
+  margin-right: 1rem;
+  margin-top: -0.2rem;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: #191919;
+}
+label > input[type="radio"]:checked + * {
+  color: #191919;
+}
+label > input[type="radio"]:checked + *::before {
+  background: radial-gradient(#191919 0%, #191919 40%, transparent 50%, transparent);
+  border-color: #191919;
+}
+
+/* basic layout */
+
+label > input[type="radio"] + * {
+  display: inline-block;
+  /* padding: 0.5rem 1rem; */
+  height:5vh;
+  padding-left: 0
+}
+
