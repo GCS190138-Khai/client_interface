@@ -7,6 +7,7 @@ import { compareAsc, format, parseISO, startOfDay } from 'date-fns'
 import Select, { components } from "react-select";
 import { getCurrentUser, getEventPayment } from "./selector"
 import { createTicket } from "./api"
+import { Link } from "react-router-dom"
 const EventCart= ()=> {
 
   const eventCart = useSelector((state)=>getEventPayment(state))
@@ -83,7 +84,7 @@ const EventCart= ()=> {
     setTicket(newElemt[0])
     
     setSessions(newElemt[0].session)
-    console.log(sessions)
+
     return 
   }
   useEffect(()=>{
@@ -103,11 +104,11 @@ const EventCart= ()=> {
     costPerTicket:ticket?.cost,
     
   }
-  
+ 
   const DropdownIndicator = props => {
     return (
       <components.DropdownIndicator {...props}>
-        <img className=" w-[18px] h-[9px] " src={require("./component/Events/arrowselect.svg" ).default}alt="123" />
+        <img className=" w-[18px] h-[9px] " src={"https://live.staticflickr.com/65535/52258056629_db753da3c5_t.jpg"}alt="123" />
       </components.DropdownIndicator>
     );
   };
@@ -120,6 +121,7 @@ const EventCart= ()=> {
 
   }
   const handlePayment= ()=>{
+
     if(newTicket.name&&
       newTicket.date&&
       newTicket.buyerInfo&&
@@ -128,6 +130,8 @@ const EventCart= ()=> {
       newTicket.time&&
       newTicket.slot){
         setisLock(true)
+    }else{
+      console.log("chua dc")
     }
 
    
@@ -146,7 +150,7 @@ const EventCart= ()=> {
 <div className=" z-20 px-[4%] py-[2%] overflow-auto  w-[50vw]   bg-[#E6DFD7] " >
 <div className=" flex flex-col h-auto pb-[4vh]    ">
 <div className=" border-primaryBlack  border-b-2 flex h-[10%]">
-<div className=" items-center w-[94%] capitalize text-aSubtitle font-title-Subtitle">{event.type}:{event.name}</div>
+<div className=" items-center w-[94%] capitalize text-aSubtitle font-title-Subtitle">{event.name}</div>
 <button onClick={()=>dispatch(offEventCart())} className=" h-fit flex justify-end  w-[6%]"> <img className=" h-[2rem] w-[2rem] " src={require("./component/Events/cross.svg").default} alt="" /></button>
 </div>
 {/* ---------- */}
@@ -158,13 +162,13 @@ const EventCart= ()=> {
 {/* ghi chu */}
 { !isLock? <div>
 
-<div className=" text-aCaption font-title2-caption h-[10vh]  ">
+{ event.ticketLimitationAtOnce ===1? <div className=" text-aCaption font-title2-caption h-[10vh]  ">
 Ghi chú: Do không gian hạn chế nên để đảm bảo trải nghiệm tốt nhất cho quý vị, sự kiện này chỉ cho phép đăng ký một vé với mỗi một tài khoản.
-</div>
+</div>:""}
 <div className=" flex flex-col gap-[5vh]">
 
 <div onClick={()=>setisShowCalendar(!isShowCalendar)} className=" relative flex items-center  justify-end ">
-<span className=" w-auto pr-[23px] cursor-pointer absolute"><img className="h-[18px] w-[18px] " src={require("./Asset/lich.svg").default} alt="123" /></span> 
+<span className=" w-auto pr-[23px] cursor-pointer absolute"><img className="h-[18px] w-[18px] " src={"https://live.staticflickr.com/65535/52258056564_e463c1bf4d_t.jpg"} alt="123" /></span> 
   <label className=" w-[25%] uppercase font-title2-caption text-aCaption" htmlFor="lich"> ngày tham gia</label>
   <input value={format(date,"dd/MM/yyyy")} type="text" className=" pl-[25px] rounded-[6px] text-aPara font-p outline-none border-none  h-[3.5rem] w-[75%]" disabled name="" id="lich" /> 
 {isShowCalendar?<div className=" z-20 translate-y-[25vh] absolute">
@@ -186,7 +190,7 @@ Ghi chú: Do không gian hạn chế nên để đảm bảo trải nghiệm t�
   <label className=" w-[25%] uppercase font-title2-caption text-aCaption" htmlFor="lich"> loại vé</label>
 
        <Select
-        className=" text-aPara font-p w-[75%] "
+        className=" cursor-pointer text-aPara font-p w-[75%] "
         
         components={{  DropdownIndicator }}
         options ={tickets}
@@ -212,7 +216,8 @@ Ghi chú: Do không gian hạn chế nên để đảm bảo trải nghiệm t�
             border:"none",
             outline:"none",
             boxShadow: 'none',
-            paddingLeft:"15px"
+            paddingLeft:"15px",
+            cursor:"pointer"
           }),
           indicatorsContainer:(provided,state)=>({
             ...provided,
@@ -220,7 +225,13 @@ Ghi chú: Do không gian hạn chế nên để đảm bảo trải nghiệm t�
            
            
           }
-          )
+          ),
+          option:(provided,state)=>({
+            ...provided,
+            background:state.isSelected?"#1B1D21":"",
+   
+        
+          }) 
         }}
       />
 
@@ -253,12 +264,12 @@ Ghi chú: Do không gian hạn chế nên để đảm bảo trải nghiệm t�
         <button  onClick={ ()=> {
           slot > 1 ?
           setslot(slot -1): console.log()
-        } } className=" rounded-l-[6px] bg-[#FFFFFF]  h-[100%] pl-[1.875rem]"><img className="  w-[2rem] " src={require("./negative.svg").default} alt="123" /></button>
+        } } className=" rounded-l-[6px] bg-[#FFFFFF]  h-[100%] pl-[1.875rem]"><img className="  w-[2rem] " src={"https://live.staticflickr.com/65535/52257773486_df41202328_t.jpg"} alt="123" /></button>
          <div className=" text-aPara font-p bg-[#FFFFFF]  w-[16vw]  flex justify-center items-center ">{slot<10?`0${slot}`:slot}</div>
           <button onClick={ ()=> {
           slot < event.ticketLimitationAtOnce?
           setslot(slot +1): console.log()
-        } } className=" rounded-r-[6px] bg-[#FFFFFF]  h-[100%]  pr-[1.875rem]"><img className="  w-[2rem] h-[1rem] " src={require("./plus.svg").default} alt="123" /></button>
+        } } className=" rounded-r-[6px] bg-[#FFFFFF]  h-[100%]  pr-[1.875rem]"><img className="  w-[2rem] h-[1rem] " src={"https://live.staticflickr.com/65535/52258056624_5ff1d0be7f_t.jpg"} alt="123" /></button>
      </div>
        
   </div>
@@ -276,15 +287,17 @@ Ghi chú: Do không gian hạn chế nên để đảm bảo trải nghiệm t�
 </div>
 </div>:
 <div className="">
+  <div className=" h-[11.7vh] text-aCaption font-[400]" >Lưu ý: Chọn “Hoàn tất & Xác nhận” tức là bạn đã xem qua và đồng ý với các điều khoản trong <span onClick={()=>{window.open("https://docs.google.com/forms/d/e/1FAIpQLSdFY-nNjRCkc9Oy6s13sV3IdF3Z2dQt5vzJYEY7M3vRpXzuHg/viewform", '_blank')}} className="font-[600] uppercase underline  cursor-pointer ">chính sách hoàn hủy</span> của chúng tôi.</div>
 <div  className=" flex items-start pb-[3.2vh] justify-end ">
   <label className=" w-[25%] leading-[7vh]  flex align-text-top uppercase font-title2-caption text-aCaption " >Hình thức</label>
   <div  className=" w-[75%] gap-[2.5vh] flex flex-wrap">
     <div className=" min-h-[7vh] pb-[2.5vh] border-b border-primaryBlack w-[100%]">
-
+  {/* radio */}
   <label className="">
     <input type="radio" name="radio-button" onClick={()=>setisOnlinePayment(false)} defaultChecked={!isOnlinePayment}  />
     <span className=" font-p text-aPara   " >  Thanh toán trực tiếp</span>
   </label>
+  {/* radio */}
   {!isOnlinePayment ?
   <div className=" pb-[1vh] text-[#000000] pt-[2.5vh]  text-[14px] font-title2-caption  ">
     <div className=" bg-[#F7F3EE] p-[4vh] ">

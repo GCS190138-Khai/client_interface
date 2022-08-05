@@ -6,6 +6,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 
 import { createContact } from '../../api';
+import Recaptcha from 'react-recaptcha';
 
 
 
@@ -16,7 +17,7 @@ function Contact() {
   const [info, setinfo] = useState(false)
   const [isVeryfy, setIsVeryfy] = useState(false)
   function onChange(value) {
-    console.log("Captcha value:", value);
+ 
     if(value){
 
      return setIsVeryfy(true)
@@ -97,7 +98,7 @@ function Contact() {
           <div className=" h-full pb-[5vh] w-[50%]">
       
       {!isSuccess?<form className='flex  flex-col justify-between w-full h-full' onSubmit={handleSubmit((data)=>{
-        console.log({data})
+        
         hanleContact(data)
       })}>
 
@@ -114,10 +115,12 @@ function Contact() {
                 <div className=' relative w-[83%] flex'>
 
                 <div className={isVeryfy?" delay-1000 absolute ml-[20vw] mt-[-5vh] opacity-0":" ml-[20vw]  mt-[-5vh] absolute opacity-100"}>
-                        <ReCAPTCHA
-                        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                        onChange={onChange}
-                        />
+                <Recaptcha
+    sitekey="6Ld-ajohAAAAAGISD2eAnPdsanZf9cl8-fyiVksl"
+    render="explicit"
+   
+    verifyCallback={onChange}
+  />
                 </div>
                 <button  type='submit' disabled={!isVeryfy}  className='flex cursor-pointer'> <img className=" ml-[-0.5rem] object-contain h-[2rem] w-[2rem] " src={ require('../../Asset/Image/arrContaCT.svg').default } alt="" /> <u className="mt-[0.8rem] font-bold text-[0.875rem]">GỬI LỜI NHẮN</u> </button>
                 

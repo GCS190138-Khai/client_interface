@@ -9,12 +9,10 @@ gsap.registerPlugin(ScrollTrigger);
 function Sct4() {
 
 let list = useRef([])
-let listLower = useRef([])
-let listPic = useRef([])
+
 const wrapper= useRef()
 
-const [isOpen, setIsOpen] = useState(true)
-const [isAnim, setIsAnim] = useState(true)
+
 useEffect(() => {
   let abortController = new AbortController();  
  ScrollTrigger.batch(list.current,{
@@ -29,31 +27,31 @@ return ()=>{
 
 
 
-  const info = [{
-    position:"GIÁM ĐỐC ĐIỀU HÀNH",
-    name:"Hiền Nguyễn",
-    slogan:"Ở Phố Bên Đồi, chúng tôi muốn đem lại những giá trị truyền thống được làm mới trong bối cảnh hiện đại",
-    pic:require('../../Asset/aboutUs/anhHien.png')
-  },
-  {
-    position:"PROJECT MANAGER",
-    name:"Khánh Nguyễn",
-    slogan:"Ở Phố Bên Đồi, chúng tôi muốn đem lại những giá trị truyền thống được làm mới trong bối cảnh hiện đại",
-    pic:require('../../Asset/aboutUs/anhHien.png')
-  },
-  {
-    position:"Chief Operations Officer",
-    name:"CÔNG TRẦN",
-    slogan:"Ở Phố Bên Đồi, chúng tôi muốn đem lại những giá trị truyền thống được làm mới trong bối cảnh hiện đại",
-    pic:require('../../Asset/aboutUs/anhHien.png')
-  },
-  {
-    position:"Chief Operations Officer",
-    name:"CÔNG TRẦN",
-    slogan:"Ở Phố Bên Đồi, chúng tôi muốn đem lại những giá trị truyền thống được làm mới trong bối cảnh hiện đại",
-    pic:require('../../Asset/aboutUs/anhHien.png')
-  }
-]
+//   const info = [{
+//     position:"GIÁM ĐỐC ĐIỀU HÀNH",
+//     name:"Hiền Nguyễn",
+//     slogan:"Ở Phố Bên Đồi, chúng tôi muốn đem lại những giá trị truyền thống được làm mới trong bối cảnh hiện đại",
+//     pic:require('../../Asset/aboutUs/anhHien.png')
+//   },
+//   {
+//     position:"PROJECT MANAGER",
+//     name:"Khánh Nguyễn",
+//     slogan:"Ở Phố Bên Đồi, chúng tôi muốn đem lại những giá trị truyền thống được làm mới trong bối cảnh hiện đại",
+//     pic:require('../../Asset/aboutUs/anhHien.png')
+//   },
+//   {
+//     position:"Chief Operations Officer",
+//     name:"CÔNG TRẦN",
+//     slogan:"Ở Phố Bên Đồi, chúng tôi muốn đem lại những giá trị truyền thống được làm mới trong bối cảnh hiện đại",
+//     pic:require('../../Asset/aboutUs/anhHien.png')
+//   },
+//   {
+//     position:"Chief Operations Officer",
+//     name:"CÔNG TRẦN",
+//     slogan:"Ở Phố Bên Đồi, chúng tôi muốn đem lại những giá trị truyền thống được làm mới trong bối cảnh hiện đại",
+//     pic:require('../../Asset/aboutUs/anhHien.png')
+//   }
+// ]
   return (  <div ref={wrapper} className="sct1Us flex flex-col pt-[20vh] text-primary items-center w-screen bg-primaryBlack"
   
   >

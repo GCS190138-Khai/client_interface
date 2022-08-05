@@ -1,11 +1,11 @@
 
 
-import React,{useRef,useEffect,useState}  from "react"
+import React,{ useState}  from "react"
 import {gsap} from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import {primaryBG} from '../../redux/navSlice'
-import { useSelector ,useDispatch } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 
 gsap.registerPlugin(ScrollTrigger)
 function Section1() {
@@ -22,16 +22,17 @@ function Section1() {
     
 
     return (
-        <div className={`h-screen bg-primary to-[transparent]  w-screen flex flex-col items-center justify-end `}>
+        <div className={`min-h-screen pt-[70px] pb-[200px] bg-primary to-[transparent]  w-screen flex flex-col items-center justify-end `}>
 
         <div className='h-[90vh] px-[1.5%] w-screen flex flex-col '>
-            <div className=" flex items-center h-[15vw]" >
+            <div className=" flex items-center w-[96vw] justify-between h-[15vw]" >
 
                 <div className={`${textHero} w-[40vw] `}>ART</div>
-                <div className='flex gap-[6vw] items-start pt-[2.1vh]  text-[1vw]  h-[7rem]  w-[] text-[#1B1D21] '>
+                <div className='flex gap-[6vw]  items-start pt-[2.1vh]  text-[1vw]  h-[7rem]  text-[#1B1D21] '>
                                 <div>
                                     PHỐ BÊN ĐỒI
                                 </div>
+                               
                                 <div className=' ' >
                                   <div>STUDIO</div>
                                   <div>ĐÀ LẠT, LÂM ĐỒNG</div>
@@ -51,10 +52,13 @@ function Section1() {
             <div className={`${textHero} w-[40vw] `}>
             CONNECTS
             </div>
-            <div className="flex">
+            <div className="flex items-end">
                 <div className={`${textHero} w-[40vw] `}>US</div>
-                <div className="text-[8vw] text-right w-[58.6vw] font-[600] ">
+                <div className=" flex items-end justify-end text-[8vw] text-right w-[58.6vw] font-[600] ">
+                    <span className=" h-fit w-fit   leading-[1.05]">
+
                     16-22&#169;
+                    </span>
                 </div>
             </div>      
         </div>

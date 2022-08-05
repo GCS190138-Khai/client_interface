@@ -55,7 +55,7 @@ const info = [{
                       <div>Hoặc gửi email qua</div>
                       <div className='flex gap-1 uppercase justify-between cursor-pointer'> <u onClick={()=>{
                                            window.open('https://mail.google.com/mail/u/0/#inbox', '_blank')
-                      }}>phobendoi@info.art</u> <img className=' object-cover  translate-y-[0.3vw] w-[0.8vw] h-[0.8vw]' src={button} alt="error" /></div>
+                      }}>info@phobendoi.art</u> <img className=' object-cover  translate-y-[0.3vw] w-[0.8vw] h-[0.8vw]' src={button} alt="error" /></div>
                   </div>
               </div>
             </div>

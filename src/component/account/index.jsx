@@ -17,7 +17,6 @@ function Account() {
   const currentUser = useSelector((state)=>state.auth.login.currentUser)
   
 
-console.log({currentUser})
   const dispatch = useDispatch()
  const  unlogged =[{
   title:"Đăng nhập",
@@ -58,7 +57,7 @@ console.log({currentUser})
       <div className=" flex flex-col h-full justify-center pt-[10vh] gap-[17vh]  w-[34%]">
       {logged.map((item,i)=>{
         return (
-          <div  key={item} end={i===0?true:false} className=" w-[12vw]" >
+          <div  key={item}  className=" w-[12vw]" >
           <div  className=" capitalize text-aSubtitle font-title-Subtitle">
             {item}
           </div>

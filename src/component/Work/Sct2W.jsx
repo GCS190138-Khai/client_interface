@@ -81,17 +81,17 @@ function Sct2W() {
     title:"Sự kiện",
     p1:{
       pic:"https://live.staticflickr.com/65535/52248775129_83a7360e34_o.png",
-      tags:["Public engagement via","Classical music, Talk,","Exhibition"],
+      tags:["Public Engagement Via","Classical Music, Talk,","Exhibition"],
       para1:[" Tổ chức các sự kiện văn hóa - nghệ thuật, kết nối các nghệ sĩ với khán giả qua các chương trình nghệ thuật cộng đồng."],
     },
  
     state:false
   },
   {
-    title:"Tư vấn",
+    title:"Tư Vấn",
     p1:{
       pic:"https://live.staticflickr.com/65535/52248775154_9c9337b1d3_o.png",
-      tags:["publishment","events Consultancy","communication"],
+      tags:["Publishment","Events Consultancy","Communication"],
       para1:[" Giải pháp hình ảnh & nội dung sáng tạo cho các đơn vị và đối tác"],
     },
  
@@ -183,7 +183,7 @@ useEffect(()=>{
       }
     }
     const handDirect=(i)=>{
-      navigate(`${i}`)
+      navigate(`/project/${i}`)
     }
     if(isLoading){
       return(
@@ -400,7 +400,7 @@ useEffect(()=>{
                     
                    </div>
                  </div>}
-                 <div className="  w-[80.5vw] absolute flex justify-end "> <img className="rotate-[45deg]"  src={require('../../Asset/work/arrowup.png')} alt="error" /></div>
+                 <div className="z-[-1]  w-[80.5vw] absolute flex justify-end "> <img className="rotate-[45deg]"  src={require('../../Asset/work/arrowup.png')} alt="error" /></div>
                  </div>
                )
              })

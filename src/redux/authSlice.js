@@ -36,9 +36,9 @@ const authSlice = createSlice({
             state.login.error=false;
             state.modal.isShowLoginMD=false
         },
-        loginFailed: (state)=>{
+        loginFailed: (state,action)=>{
             state.login.isFetching=false;
-            state.login.error=true
+            state.login.error=action.payload
         },
         // register----------------
         registerStart: (state)=>{

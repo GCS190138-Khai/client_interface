@@ -28,7 +28,7 @@ function EventAdminDetail() {
   const [isOnline, setisOnline] = useState(true)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+const [isLoading, setisLoading] = useState(true)
 
   // const {tab } = location.state===null?"tất cả":location.state
   
@@ -37,7 +37,16 @@ function EventAdminDetail() {
 
   useEffect(()=>{
 
-    getEventById(dispatch,eventID)
+
+    if(isLoading){
+      (async () => {
+        await getEventById(dispatch,eventID)
+         
+        return setisLoading(false)
+      })();
+    
+      
+    }
   },[eventID])
 
   useEffect(()=>{
@@ -118,9 +127,16 @@ const handleActive = async (ticket,id)=>{
   
 }
 
+if(isLoading){
+  return(
+    <div>
+      Loandingg.....
+    </div>
+  )
+}else{
 
   return ( 
-
+  
     <div className=" h-[auto] flex pt-[15vh]    flex-col items-center w-[100%] bg-primary ">
     
       <div className=" flex justify-center gap-[2rem] ">
@@ -198,7 +214,7 @@ const handleActive = async (ticket,id)=>{
                                     item3.onlinePayment.map((item4,i)=>{
                                       return(
                                         <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
- 
+  
                                           <th scope="row" className={`${item4.isPaid?"bg-green-400":" bg-red-400"} shrink-0 min-w-0 px-6 py-4 font-medium text-white dark:text-white whitespace-nowrap`}>
                                           {item4.name}
                                             </th>
@@ -273,7 +289,7 @@ const handleActive = async (ticket,id)=>{
        Back
       </div>
       <div className=" flex justify-between flex-col w-[100%]  mt-[10vh] h-[60vh]">
-
+  
       <div className=" w-[100%] capitalize text-aTitle2 font-[500] indent-[-0.3vw] " >{`${event.type}:${event.name}`}  </div>
       <div className=" flex text-aCaption uppercase h-[35%]   ">
         <div className=" w-[20%]  ">
@@ -307,11 +323,11 @@ const handleActive = async (ticket,id)=>{
           })}
         </div>
         </div>
-
+  
         <div className=" w-[25%]  flex justify-end ">
         
         </div>
-
+  
       </div>
       </div>
        <div className="  h-[auto] w-[100%]  "> <img className=" rounded-[20px] object-cover w-[100%] h-[120vh] object-center " src={event.heroPic} alt="" /> </div>
@@ -345,6 +361,8 @@ const handleActive = async (ticket,id)=>{
           <div className="spacer w-screen h-[20vh]"></div>
     </div>
    );
+  }
 }
+
 
 export default EventAdminDetail;

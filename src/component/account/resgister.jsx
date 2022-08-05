@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
  
 
 import { useForm } from "react-hook-form";
@@ -8,10 +8,13 @@ import './this.css'
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const currentUser = useSelector((state)=>state.auth.login.currentUser)
+    
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
     password:"",
     repassword:""  
   });
+
   const [isShowPass, setisShowPass] = useState(false)
   const [isCormfim, setisCormfim] = useState(true)
   const [messageErrOfUsername, setMessageErrOfUsername] = useState(true)
@@ -22,13 +25,14 @@ function Register() {
   //   navigate('/account')
   // }
   const handleLogin= async (data)=>{ 
- 
+    
+    console.log({data})
     const newUser ={
-        username:data.username,
+        username:data.username.trim(),
         name:data.name,
         email:data.email,
-        password:data.password,
-        phone:data.phone
+        password:data.password.trim(),
+        phone:data.phone.trim()
 
     };
    
@@ -67,7 +71,7 @@ function Register() {
       <form onSubmit={handleSubmit((e)=>{
        
         handleLogin(e)
-      })} className=' flex flex-col gap-[15px] h-fit w-[86.5%]  '>
+      })} className=' flex flex-col gap-[15px] h-fit w-[57.2vw]  '>
                 <div className=' cont_input   '>
                   <input className=' pb-[0.875vh] focus:border-primaryBlack  focus:ring-0 w-full  inp' {...register("name",{required:"*Đây là trường bắt buộc"})} type="text" placeholder='   Họ & Tên*' 
                    />
@@ -124,7 +128,7 @@ function Register() {
                  <input className=' pb-[0.875vh] focus:border-primaryBlack focus:ring-0 w-full inp ' 
                  {...register("repassword",{required:"*Đây là trường bắt buộc",
                   
-                })} type={isShowPass?"text":"password"} placeholder='   Mật Khẩu*' 
+                })} type={isShowPass?"text":"password"} placeholder='   Nhập Lại Mật Khẩu*' 
                  />
                  <span onClick={()=>setisShowPass(!isShowPass)} className='  cursor-pointer text-aCaption font-[600] absolute w-fit h-fit'> {isShowPass?"Ẩn":"Hiện"}</span>
                   </div>
@@ -133,7 +137,7 @@ function Register() {
                 </div>
               
                 <div className=' spacer h-[6vh]'></div>
-                <button  type='submit'   className=' w-fit flex cursor-pointer'> <img className=" ml-[-0.5rem] object-contain h-[2rem] w-[2rem] " src={ require('../../Asset/Image/arrContaCT.svg').default } alt="" /> <u className="mt-[0.8rem] font-bold text-[0.875rem]">ĐĂNG KÝ</u> </button>
+                <button  type='submit'   className=' w-fit flex cursor-pointer'> <img className=" ml-[-0.5rem] object-contain h-[2rem] w-[2rem] " src={ "https://live.staticflickr.com/65535/52252454497_7a572f16d1_o.png" } alt="" /> <u className="mt-[0.8rem] font-bold text-[0.875rem]">ĐĂNG KÝ</u> </button>
             </form>
     </div>
   );

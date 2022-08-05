@@ -29,6 +29,13 @@ import Account from './component/account';
 import Login from './component/account/loggin';
 import Register from './component/account/resgister';
 import AdminContact from './admin/Contact';
+import CheckOut from './component/Shop/check_out';
+import CartFallBack from './component/Shop/cart_fall_back';
+import City from './admin/city';
+import NewProduct from './admin/addNewProduct';
+import AddNewGiftCode from './admin/addNewGiftCode';
+import BillList from './admin/billList';
+import BillDetail from './admin/billDetail';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -38,12 +45,15 @@ ReactDOM.render(
   
     <Routes >
     <Route path=':productID' element={<ProductDetail></ProductDetail>}  ></Route>
+    <Route path='/project/:id'  element = {<Project1/>} />
       <Route path='/'  element = {<App/>}>
+      <Route path='cart' element={<CartFallBack></CartFallBack>}  > </Route>
+    <Route path='check_out' element={<CheckOut></CheckOut>}  > </Route>
           <Route  index  element = { <Mainpage />}/>
           <Route  path='aboutus' element = { <AboutUs />}/>
           <Route path='work/' element={<Work></Work>}>
           <Route path='' element={<WorkTab></WorkTab>}/>
-          <Route path=':id'  element = {<Project1/>} />
+        
           </Route>
           <Route path='contact' element={<Contact/>}/>
           <Route path='account' element={<Account></Account>}>
@@ -52,22 +62,13 @@ ReactDOM.render(
             
           </Route>
           <Route path='shop' element ={<Shop/>}>
-            {/* <Route path='all' element={<AllProduct/>}  >
-              <Route path=':productID' element={<ProductDetail></ProductDetail>}  ></Route>
-            </Route>
-            <Route path='new' element={<NewProduct/>}  >
-            <Route path=':productID' element={<ProductDetail></ProductDetail>}  ></Route>
-            </Route>
-            <Route path='best' element={<BestProduct/>}  >
-            <Route path=':productID' element={<ProductDetail></ProductDetail>}  ></Route>
-            </Route>
-            <Route path=':genresID' element={<CategorizedProdcut/>}></Route>
-            <Route path=':productID' element={<ProductDetail></ProductDetail>}  ></Route>
-             */}
+       
               <Route index element={<Categories/>}></Route>
               <Route path=':genresID' element={<Categories/>}></Route>
+
+             
               </Route>
-              
+            
          
           <Route path='event' element ={<Events/>}>
               
@@ -82,7 +83,16 @@ ReactDOM.render(
                 </Route>
                 <Route path="ContactAdmin" element={<AdminContact></AdminContact>} >
                 </Route>
-                <Route path=':eventID' element={<EventAdminDetail></EventAdminDetail>}  ></Route>
+                <Route path=':eventID' element={<EventAdminDetail></EventAdminDetail>}></Route>
+                <Route path="city" element={<City></City>} >
+                </Route>
+                <Route path="newProduct" element={<NewProduct></NewProduct>} ></Route>
+                <Route path="new_giftcode" element={<AddNewGiftCode></AddNewGiftCode>} ></Route>
+                <Route path="bill" element={<BillList></BillList>} >
+                </Route>
+                <Route path="thisbill/:billID" element={<BillDetail></BillDetail>} >
+                  
+                  </Route>
           </Route>
       </Route >
 

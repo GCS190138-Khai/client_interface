@@ -62,58 +62,63 @@ function ProductDetail() {
       })
 
 const addToCart= (item, option)=>{
- 
-  const cartItem ={
-    name:item.name,
-    quantity:slot,
-    cost:option.cost,
-    thumnailPics:option.thumnailPics,
-    version:option.style,
-    info:{
-      product:item._id,
-      user: "current"
-    }
-  }
-  dispatch(onStatic()) 
-  if(cart.length===0){
-    dispatch(updateNumber([cartItem]))
-  
-   
-    setslot(1)
-    
-    
-    return 
-  }else {
-    let newList = [...cart]
-   const elemt = _.find(cart,(o)=>
-   
-      
-      
-      o.info.product===cartItem.info.product&&o.version===cartItem.version
-  )
-  if(!elemt){
-    newList.push(cartItem)
-    dispatch(updateNumber(newList))
-    
- 
-    return setslot(1)
-  }else{
-    let  newList2 = cart.map((map)=>{
-        
-      if(map.info.product===cartItem.info.product&&map.version===cartItem.version){
-        
-        return {...map,quantity:map.quantity+cartItem.quantity}
+    if(productID==="none"){
+
+      return alert('Tính năng này sẽ sớm đc ra mắt !')
+    }else{
+
+      const cartItem ={
+        name:item.name,
+        quantity:slot,
+        cost:option.cost,
+        thumnailPics:option.thumnailPics,
+        version:option.style,
+        info:{
+          product:item._id,
+          user: "current"
+        }
       }
+      dispatch(onStatic()) 
+      if(cart.length===0){
+        dispatch(updateNumber([cartItem]))
       
-      return {...map}
-    })
-    
-    dispatch(updateNumber(newList2))
-   
-    
-    return setslot(1)
-  } 
-  }
+       
+        setslot(1)
+        
+        
+        return 
+      }else {
+        let newList = [...cart]
+       const elemt = _.find(cart,(o)=>
+       
+          
+          
+          o.info.product===cartItem.info.product&&o.version===cartItem.version
+      )
+      if(!elemt){
+        newList.push(cartItem)
+        dispatch(updateNumber(newList))
+        
+     
+        return setslot(1)
+      }else{
+        let  newList2 = cart.map((map)=>{
+            
+          if(map.info.product===cartItem.info.product&&map.version===cartItem.version){
+            
+            return {...map,quantity:map.quantity+cartItem.quantity}
+          }
+          
+          return {...map}
+        })
+        
+        dispatch(updateNumber(newList2))
+       
+        
+        return setslot(1)
+      } 
+      }
+    }
  
 
 }
@@ -131,19 +136,25 @@ const handleClick =(state)=>{
   useEffect(()=>{
     gsap.to(window,{ scrollTo:{y:0},duration:0})
         dispatch(primaryBG())
-      if(isLoading){
-     
-        (async () => {
-          const data =await getOneProduct(productID)
-          setProduct(data)
-          console.log({product})
+        if(productID==="none"){
+
+          return alert('Tính năng này sẽ sớm đc ra mắt !')
+        }else{
+
+          if(isLoading){
          
-          return setisLoading(false)
-           
-         
-        })();
-        
-      }
+            (async () => {
+              const data =await getOneProduct(productID)
+              setProduct(data)
+              console.log({product})
+             
+              return setisLoading(false)
+               
+             
+            })();
+            
+          }
+        }
       
   },[productID])
   useEffect(()=>{
@@ -154,10 +165,10 @@ const handleClick =(state)=>{
   if(isLoading){
     return ( 
       <div className="  w-screen px-[10%] pt-[20vh] ">
-         <div className=" border-2 flex border-red-600 w-full h-screen">
+         <div className="  flex  w-full h-screen">
           <div className=" flex flex-col w-[70%]">
           <div className="flex gap-1 text-aCaption font-normal uppercase items-center  w-fit"><img src={require("./backarrow.svg").default} className=" h-[11px] w-[15px]" alt="123" /> <span className=" relative">
-           <div className="  text-aCaption font-[400]">{location.state.tab?`quay lại${location.state.tab}`:"quay lại cửa hàng"}</div> 
+           <div className="  text-aCaption font-[400]">{!location.state?.tab?"quay lại cửa hàng":`quay lại${location.state.tab}`}</div> 
           <dir className=" w-full mt-[-0.4vh] m-0 absolute  border-b border-primaryBlack"></dir>
           </span></div>
           <div>

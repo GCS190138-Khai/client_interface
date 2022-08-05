@@ -8,7 +8,7 @@ import jwt_decode from "jwt-decode"
 
   const refreshTonken=async()=>{
         try {
-          const res = await axios.post(`http://localhost:8000/auth/refresh`,{
+          const res = await axios.post(`http://phobendoi.art/api/auth/refresh`,{
             withCredentials:true,
           })
       
@@ -23,12 +23,12 @@ export const createAxios = (currentUser,dispatch,stateSuccess) =>{
     axiosJWT.interceptors.request.use(
         
         async(config)=>{
-            
+            console.log(currentUser)
           let date = new Date()
           const decodedToken =jwt_decode(currentUser.accessToken)
           if(decodedToken.exp < date.getTime()/1000){
              const data = await refreshTonken();
-             console.log("refresh")
+  
              const refreshUser ={
                ...currentUser,
                accessToken: data.accessToken,
@@ -45,4 +45,7 @@ export const createAxios = (currentUser,dispatch,stateSuccess) =>{
         }
       )
       return axiosJWT
+}
+export const toVND = (data) =>{
+  return new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(data)
 }

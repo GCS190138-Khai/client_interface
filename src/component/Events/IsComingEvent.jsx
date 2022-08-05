@@ -2,10 +2,11 @@
 import { format, parseISO } from "date-fns"
 import React from "react"
 import vi from 'date-fns/locale/vi'
-import { useEffect } from "react"
+ 
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useLocation } from "react-router-dom"
-import { getAllEvent, getEventById } from "../../api"
+import { Link   } from "react-router-dom"
+import {   getEventById } from "../../api"
+import _ from "lodash"
 function IsComingEvent() {
 
   const dispatch = useDispatch()
@@ -14,9 +15,8 @@ function IsComingEvent() {
 
 
 const openingList = useSelector((state)=>state.event.events.allEvent)
-
-const list = openingList.filter(value=>value.eventStatus===0)
-
+const rawList =openingList.filter(value=>value.eventStatus===0)
+const list = _.orderBy(rawList,[item=>item.createdAt],['desc'])
 
 const dateHours =(hours,min)=>{
 
@@ -30,7 +30,7 @@ return (
   
   <div className=" h-auto w-[100%] flex flex-col gap-[12vh]  ">
     {
-      list.map((item,i)=>{
+      list?.map((item,i)=>{
   
         return (
              

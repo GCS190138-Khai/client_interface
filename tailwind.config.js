@@ -44,9 +44,9 @@ module.exports = {
  
       },
       backgroundImage: {
-        'docnhalang': "url('/src/Asset/Mainpage/sct5.2.svg')",
-        'steam': "url('/src/Asset/Mainpage/sct5.3.svg')",
-        'artTech':"url('/src/Asset/Mainpage/sct5.4.svg')",
+        'docnhalang': "url('https://live.staticflickr.com/65535/52253442418_dcbffc95a5_o.png')",
+        'steam': "url('https://live.staticflickr.com/65535/52253921060_5846d295c2_o.png')",
+        'artTech':"url('https://live.staticflickr.com/65535/52252463067_221b4d3acd_o.png')",
         'shop':"url('/src/component/Shop/heropic.svg')"
         
        
@@ -56,8 +56,8 @@ module.exports = {
         'aCaptionVw': '0.985vw',
         'aButton': '1.1722vw',
         'aButtonVw': '1.1rem',
-        'aPara': '22px',
-        'aParaVw': '22px',
+        'aPara': '1.375rem',
+        'aParaVw': '1.375rem',
         'aSubtitle': '2rem',
         'aSubtitleVw': ' 2.0835vw',
         'aTitle2': '4rem',

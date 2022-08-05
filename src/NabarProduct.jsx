@@ -194,9 +194,9 @@ const currentUser = useSelector((state)=>state.auth.login.currentUser)
                             </div>
                             <div className=' flex items-end h-[25vh] '>
                                 <div className='h-[7rem] w-[50%]'>
-                                <img className='h-[7rem] w-[7rem]  object-fill ' src={require('./Asset/Nav/logo.svg').default} alt="123" />
+                                <img className='h-[7rem] w-[7rem]  object-contain ' src={require('./Asset/Nav/logo.png')} alt="123" />
                                 </div>
-                                <div className='flex gap-[7vw] items-end pb-[2.3vh] text-[0.8vw]  h-[7rem]  w-[50%] text-[#F7F3EE] '>
+                                <div className='flex justify-between items-end pb-[2.3vh] text-[0.8vw]  h-[7rem]  w-[40%] text-[#F7F3EE] '>
                                 <div className=' ' >
                                   <div>STUDIO</div>
                                   <div>ĐÀ LẠT, LÂM ĐỒNG</div>
@@ -220,7 +220,7 @@ const currentUser = useSelector((state)=>state.auth.login.currentUser)
      </div>
     <div className="flex px-[2%]  justify-between   h-[100%] items-center ">
         <div className='flex gap-5 items-center    ' ref={menu}>
-          {!isOpen? <Link onClick={handleToggle} to='/'><button className={`${button} z-10 `}>TRANG CHỦ</button></Link>:<Link onClick={handleToggle} to='/'><button className={`${buttonOpen} z-10 `}>TRANG CHỦ</button></Link> }
+          {!isOpen? <Link  to='/'><button className={`${button} z-10 `}>TRANG CHỦ</button></Link>:<Link onClick={handleToggle} to='/'><button className={`${buttonOpen} z-10 `}>TRANG CHỦ</button></Link> }
            
         </div>
         <div className=" spacer  w-[50%] "></div>

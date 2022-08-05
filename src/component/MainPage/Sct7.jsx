@@ -30,7 +30,7 @@ function Section7() {
    
      
   return (  
-    <div className="flex flex-col min-h-screen gap-[7vh] container_7 ">
+    <div className="flex flex-col min-h-screen pb-[160px] gap-[7vh] pt-[65px] container_7 ">
        
         <div className="  header_text">
         <div className="text flex ">

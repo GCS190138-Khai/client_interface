@@ -13,11 +13,12 @@ function Index() {
     window.scrollTo({  top: 0})
   
  },[])
+
   useLayoutEffect(()=>{
     dispatch(primaryBG())
     let abortController = new AbortController();  
     getAllProject(dispatch,15)
-   
+
     return () => {
       abortController.abort()
     };

@@ -5,6 +5,7 @@ import { useSelector ,useDispatch } from 'react-redux';
 
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import Nabar from "../../Nabar";
 
 
 function Project1() {
@@ -23,7 +24,7 @@ const i = parseInt(id.id)
 
 const [item,setItem] = useState(itemList[i])
 // const [item,setItem] = useState([])
-console.log({item})
+ 
 
 
   
@@ -38,7 +39,7 @@ useEffect(()=>{
 useEffect(()=>{
    
   let abortController = new AbortController();  
- console.log("first")
+ 
   gsap.to(container.current,{ scrollTo:{
     x:1500,
   },ease:"none",
@@ -62,21 +63,21 @@ const handlePre=()=>{
   if(i===0||i<=0){
     return
   }
-  Navigate(`/work/${i-1}`)
+  Navigate(`/project/${i-1}`)
   setItem(itemList[i-1])
 }
 const handleNext=()=>{
   if(i===itemList.length-1|| i>=itemList.length-1){
     return
   }
-  Navigate(`/work/${i+1}`)
+  Navigate(`/project/${i+1}`)
   setItem(itemList[i+1])
 }
 
 
     return (  
         <div  className={` w-screen text-[${textColor}]  h-[auto] `} >
-
+          <Nabar></Nabar>
            <img className=" -z-10 w-[100vw] h-[100vh] object-cover object-center  fixed" src={item?.picHero} alt="heropic" />
        
           <div className={` pb-[150px]    bg-${bgColor} z-10 w-screen items-center justify-center min-h-screen flex px-[2%]`}>
@@ -190,11 +191,11 @@ const handleNext=()=>{
         {/* hero2  */}
         {item.picHero2.length!==0?<div className="min-h-[100vh]  pb-[150px] px-[2%] gap-[30px]   w-screen flex flex-col">
           <div className=" flex gap-[30px]">
-            <div> <img className=" h-[1000px] w-[48vw] rounded-[50px]  " src={item.picHero2[0]} alt="" /> </div>
-            <div> <img className=" h-[1000px] w-[48vw] rounded-[50px]  " src={item.picHero2[1]} alt="" /> </div>
+            <div> <img className="object-cover object-center h-[1000px] w-[48vw] rounded-[50px]  " src={item.picHero2[0]} alt="" /> </div>
+            <div> <img className="object-cover object-center h-[1000px] w-[48vw] rounded-[50px]  " src={item.picHero2[1]} alt="" /> </div>
           </div>
             <div>
-            <img className=" h-[1000px] w-[96vw] rounded-[50px]  " src={item.picHero2[2]} alt="" />
+            <img className="object-cover object-center h-[1000px] w-[96vw] rounded-[50px]  " src={item.picHero2[2]} alt="" />
             </div>
         </div>:""}
         {/*  */}
@@ -222,7 +223,7 @@ const handleNext=()=>{
         {item.picHero3?<div className="hero3 min-h-[100vh] pb-[150px] px-[2%] gap-[30px]   w-screen flex flex-col">
        
             <div>
-            <img className=" h-[1000px] w-[96vw] rounded-[50px]  " src={item.picHero3} alt="" />
+            <img className=" object-cover object-center h-[1000px] w-[96vw] rounded-[50px]  " src={item.picHero3} alt="" />
             </div>
         </div>:""}
         {/*  */}
@@ -255,7 +256,7 @@ const handleNext=()=>{
             return(
              
               <div onClick={()=> window.open(i.link, '_blank')}  className=" cursor-pointer flex items-center gap-[10px] ">
-               <div className="border-b leading-[1] border-primary">{i.title}</div>  <img className=" w-[14.5px] h-[14.5px] " src={require("./arrow.svg").default} alt="" />
+               <div className="  border-b leading-[1] border-primary">{i.title}</div>  <img className=" w-[17px] object-cover object-center h-[14.5px] " src={"https://live.staticflickr.com/65535/52253609325_f4291fae6b_o.png"} alt="" />
               </div>
            
             )

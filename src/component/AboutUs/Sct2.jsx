@@ -7,7 +7,7 @@ function Sct2() {
   const paragraph4='Trải qua 6 năm hoạt động, tính đến năm 2022, với những sự kiện thành công và uy tín được tạo dựng trong nước và quốc tế, chương trình nghệ thuật đa hình thái Phố Bên Đồi đã và đang thu hút được sự quan tâm lớn của cộng đồng yêu nghệ thuật, chuyên gia, các doanh nghiệp cũng như sự ủng hộ từ người dân và chính quyền địa phương.'
   const paragraph5 ='Phố Bên Đồi đã đi tiên phong trong việc tạo ra một nền tảng để kết nối các nguồn lực trong cộng đồng, đồng thời xây dựng thương hiệu "Đà Lạt - Thành phố nghệ thuật", đóng vai trò quan trọng trong chiến lược phát triển của ngành công nghiệp sáng tạo Việt Nam và quốc tế.'
   const paragraph6= 'Thông qua các hình thức nghệ thuật đương đại, công nghệ, hoạt động cộng đồng và du lịch, Phố Bên Đồi khuyến khích công chúng nâng cao nhận thức về bảo tồn đô thị, bảo vệ môi trường và phát triển bền vững.'
-  const pic = require('../../Asset/aboutUs/Sct2.1.png')
+  const pic = "https://live.staticflickr.com/65535/52253422656_40fecf4428_o.png"
   return ( <div className=" bg-primary w-screen ">
         <div className="h-[120vh] px-[2%]  pt-[120px]   w-screen flex flex-col">
       <div className=' flex   w-[100%] font-semibold   '>

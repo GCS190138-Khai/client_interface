@@ -1,5 +1,5 @@
 
-import { format, parseISO } from "date-fns"
+import { format } from "date-fns"
 import React from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -7,6 +7,7 @@ import { Link,   } from "react-router-dom"
 import { getAllEvent, getEventById } from "../../api"
 import vi from 'date-fns/locale/vi'
 import { useState } from "react"
+import _ from "lodash"
 
 function AllEvents() {
 
@@ -15,14 +16,17 @@ function AllEvents() {
 
 const dispatch = useDispatch()
 
-const list = useSelector((state)=>state.event.events.allEvent)
+const rawList = useSelector((state)=>state.event.events.allEvent)
+
 
 const [isLoading, setIsLoading] = useState(true)
+const [list, setlist] = useState([])
 useEffect(()=>{
   if(isLoading){
     (async () => {
       await     getAllEvent(dispatch)
-       
+      const newList  = _.orderBy(rawList,[item=>item.createdAt],['desc'])
+      setlist(newList)
       return setIsLoading(false)
     })();
   

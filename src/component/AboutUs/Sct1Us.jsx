@@ -20,7 +20,7 @@ function Sct1() {
   const bgColor = useSelector((state)=>state.nav.color.bgColor)
 
   // const pic = require('../../Asset/aboutUs/sct1.1.svg').default
-  const pic = require('./image 14.svg').default
+  const pic = "https://live.staticflickr.com/65535/52252453962_e60e9974f8_o.png"
   const [paragraph1,setParagraph1]= useState('Nhóm dự án nghệ thuật cộng đồng khởi nguồn từ Đà Lạt')
   return (  
   <div className={`sct1Us flex flex-col gap-[10vh] items-center w-screen min-h-screen bg-${bgColor}`}

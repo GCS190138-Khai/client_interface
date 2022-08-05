@@ -2,6 +2,7 @@ import _, { get } from "lodash";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getLimitProduct } from "./api";
 import { offStatic, onEventCart, onStatic, updateNumber } from "./redux/navSlice";
 
@@ -31,17 +32,19 @@ const handleNegative = (id,version) =>{
 }
 
 const handlePlus = async (id,version) =>{
+  
   let data ={
     id:id,
     style:version
   }
     const limit = await getLimitProduct(data)
+  console.log(limit)
   let newList  = cart.map(item=>
     
     {if(item.info.product===id&&item.version===version){
-     
+      
       if(item.quantity<limit){
-       
+        console.log("click")
         return {...item,quantity : item.quantity+1 }
       }
     }
@@ -78,7 +81,7 @@ const handleSum = ()=>{
  return setSum(res)
 }
   return (  
-    <div className=" z-[1000] border-2 border-red-200 flex justify-between  w-screen h-screen fixed  ">
+    <div className=" z-[1000]   flex justify-between  w-screen h-screen fixed  ">
 
 
       <div onClick={()=>dispatch(offStatic())} className=" bg-primaryBlack opacity-20 w-[62%] h-screen "> </div>
@@ -93,9 +96,9 @@ const handleSum = ()=>{
             {
               cart?.map((item,i)=>{
                 return (
-                  <div key={item.info.product+item.version} className="item items-center min-h-[16vh] justify-between border-b border-primary w-full flex">
+                  <div key={item.info.product+item.version+i} className="item items-center min-h-[120px] justify-between border-b border-primary w-full flex">
                       <div className=" w-[75px] h-[75px]">
-                        <img className=" h-full w-full object-cover object-center" src={item.thumnailPics}alt="" />
+                        <img className=" h-full w-full object-cover object-center" src={item.thumnailPics} alt="" />
                       </div>
                       {/*  */}
                       <div className=" justify-between w-[82%] flex flex-col h-[78px]">
@@ -142,6 +145,12 @@ const handleSum = ()=>{
           <div className=" text-aPara font-[500]"> {new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'VND' }).format(sum)} </div>
         </div>
         {/*  */}
+        <Link to={'/check_out'}>
+        <div className="flex bg-primary  items-center rounded-[5px] h-[6rem]  w-full justify-center">
+
+            <span className=" text-primaryBlack text-aPara font-[500]  w-fit h-fit">ĐẾN THANH TOÁN</span>
+        </div>
+        </Link>
       </div>
    
 

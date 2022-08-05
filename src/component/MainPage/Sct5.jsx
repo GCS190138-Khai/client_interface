@@ -51,23 +51,23 @@ function Section5() {
         onReverseComplete:()=>dispatch(primaryBG())
       })
         tl.to(ani1.current,{ display:"flex",duration:1 })
-          .to(ani1.current,{y:50,duration:1})
-          .to(ani1.current,{y:50,duration:1,opacity:0,display:"none"})
+          .to(ani1.current,{ duration:1})
+          .to(ani1.current,{ duration:1,opacity:0,display:"none"})
           .to(ani2.current,{ display:"flex",duration:1 })
-          .to(ani2.current,{y:50,duration:1})
-          .to(ani2.current,{y:50,duration:1,opacity:0,display:"none"})
+          .to(ani2.current,{ duration:1})
+          .to(ani2.current,{ duration:1,opacity:0,display:"none"})
           .to(ani3.current,{ display:"flex",duration:1 })
-          .to(ani3.current,{y:50,duration:1})
-          .to(ani3.current,{y:50,duration:1,opacity:0,display:"none"})
+          .to(ani3.current,{ duration:1})
+          .to(ani3.current,{ duration:1,opacity:0,display:"none"})
       return ()=>{
-        // tl.getById('sct5').kill()
+    
      abortController.abort()
-     console.log('aborted')
+
       }
     },[])
 
   return (  
-    <div className=" pt-[20vh] w-screen h-[auto] flex flex-col gap-[5vw] color-[#1B1D21] bg-[#F7F3EE] " ref={Sct5}>
+    <div className=" pt-[200px] w-screen h-[auto] flex flex-col gap-[5vw] color-[#1B1D21] bg-[#F7F3EE] " ref={Sct5}>
       <div className=" px-[2%]  flex">
         <div className="w-[30vw] mt-[1vw] text-[1vw] font-[400]"> {`(CÁC DỰ ÁN)`} </div>
         <div className="flex w-[58vw] justify-between gap-3">
@@ -84,7 +84,7 @@ function Section5() {
 
               <div ref={ani1} className=" hidden h-[30vh]   w-[96vw] ">
                 <div className="w-[30vw]"></div>
-              <div className=" mt-[4.5vw] flex flex-col justify-center translate-y-[-2.5vw] " >
+              <div className=" mt-[4.5vw] flex flex-col justify-center   " >
 
                 <div className=" h-full flex items-start text-aCaption font-[400]">
                   <span className=" h-fit pr-[1vw] mt-[1.5vh] ">
@@ -96,14 +96,14 @@ function Section5() {
               <div className=" w-[50vw] font-600 text-aTitle1">
                 Dốc Nhà Làng
                 <div className=" ml-[0.5vw] flex justify-between w-[50%]">
-                <div><button  className=' text-aButtonVw flex gap-3 items-end ' ><img className='h-6 mt-[-0.5vw] object-contain rounded-none w-5' src={require('./img/white.svg').default} alt="" /> <Link to={'/work/2'}><span className=' border-b-[1px] font-bold leading-4 border-primary'>XEM CHI TIẾT</span></Link>    </button></div>
+                <div><button  className=' text-aButtonVw flex gap-3 items-end ' ><img className='h-6 mt-[-0.5vw] object-contain rounded-none w-5' src={require('./img/white.svg').default} alt="" /> <Link to={'/project/0'}><span className=' border-b-[1px] font-bold leading-4 border-primary'>XEM CHI TIẾT</span></Link>    </button></div>
                   <div><button  className=' text-aButtonVw flex gap-3 items-end ' ><img className='h-6 mt-[-0.5vw] object-contain rounded-none w-5' src={require('./img/white.svg').default} alt="" /> <Link to={'/work'}><span className=' border-b-[1px] font-bold leading-4  border-primary'>TẤT CẢ DỰ ÁN</span></Link>    </button></div>
                 </div>
               </div>
               </div>
               <div ref={ani2} className=" hidden h-[30vh]   w-[96vw] ">
                 <div className="w-[30vw]"></div>
-              <div className=" mt-[4.5vw] flex flex-col justify-center translate-y-[-2.5vw] " >
+              <div className=" mt-[4.5vw] flex flex-col justify-center   " >
 
                 <div className=" h-full flex items-start text-aCaption font-[400]">
                   <span className=" h-fit pr-[1vw] mt-[1.5vh] ">
@@ -112,17 +112,17 @@ function Section5() {
                   </span>
                 </div>
               </div>
-              <div className="  capitalize  w-[50vw] font-600 text-aTitle1">
+              <div className="  capitalize  w-[60vw] font-600 text-aTitle1">
               Relive The Time
-                <div className=" ml-[0.5vw] flex justify-between w-[50%]">
-                <div><button  className=' text-aButtonVw flex gap-3 items-end ' ><img className='h-6 mt-[-0.5vw] object-contain rounded-none w-5' src={require('./img/white.svg').default} alt="" /> <Link to={'/work/1'}><span className=' border-b-[1px] font-bold leading-4 border-primary'>XEM CHI TIẾT</span></Link>    </button></div>
+                <div className=" ml-[0.5vw] flex justify-between w-[25vw]">
+                <div><button  className=' text-aButtonVw flex gap-3 items-end ' ><img className='h-6 mt-[-0.5vw] object-contain rounded-none w-5' src={require('./img/white.svg').default} alt="" /> <Link to={'/project/1'}><span className=' border-b-[1px] font-bold leading-4 border-primary'>XEM CHI TIẾT</span></Link>    </button></div>
                   <div><button  className=' text-aButtonVw flex gap-3 items-end ' ><img className='h-6 mt-[-0.5vw] object-contain rounded-none w-5' src={require('./img/white.svg').default} alt="" /> <Link to={'/work'}><span className=' border-b-[1px] font-bold leading-4  border-primary'>TẤT CẢ DỰ ÁN</span></Link>    </button></div>
                 </div>
               </div>
               </div>
               <div ref={ani3} className=" hidden h-[30vh]   w-[96vw] ">
                 <div className="w-[30vw]"></div>
-              <div className=" mt-[4.5vw] flex flex-col justify-center translate-y-[-2.5vw] " >
+              <div className=" mt-[4.5vw] flex flex-col justify-center  " >
 
                 <div className=" h-full flex items-start text-aCaption font-[400]">
                   <span className=" h-fit pr-[1vw] mt-[1.5vh] ">
@@ -134,7 +134,7 @@ function Section5() {
               <div className=" capitalize w-[50vw] font-600 text-aTitle1">
               SmartCity+ ArtTech Fusion
                 <div className=" ml-[0.5vw] flex justify-between w-[50%]">
-                  <div><button  className=' text-aButtonVw flex gap-3 items-end ' ><img className='h-6 mt-[-0.5vw] object-contain rounded-none w-5' src={require('./img/white.svg').default} alt="" /> <Link to={'/work/2'}><span className=' border-b-[1px] font-bold leading-4 border-primary'>XEM CHI TIẾT</span></Link>    </button></div>
+                  <div><button  className=' text-aButtonVw flex gap-3 items-end ' ><img className='h-6 mt-[-0.5vw] object-contain rounded-none w-5' src={require('./img/white.svg').default} alt="" /> <Link to={'/project/2'}><span className=' border-b-[1px] font-bold leading-4 border-primary'>XEM CHI TIẾT</span></Link>    </button></div>
                   <div><button  className=' text-aButtonVw flex gap-3 items-end ' ><img className='h-6 mt-[-0.5vw] object-contain rounded-none w-5' src={require('./img/white.svg').default} alt="" /> <Link to={'/work'}><span className=' border-b-[1px] font-bold leading-4  border-primary'>TẤT CẢ DỰ ÁN</span></Link>    </button></div>
                 </div>
               </div>

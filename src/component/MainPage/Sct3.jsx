@@ -55,36 +55,7 @@ function Section3() {
        
         }
     },[])
-    useEffect(()=>{
-      let abortController = new AbortController();  
-        const tl = new gsap.timeline({
-          paused:true,
-          id:"sct3",
-          scrollTrigger:{
-            id:"sct3",
-            snap:false,
-            trigger:Sct33.current,
-            start:"20% center",
-            end:"40% center",
-          scrub:true,
-     
-      
-          }
-        })
-        tl.to(Sct33.current,{duration:2, background:"rgba(25, 25, 25, 1)", color:"#f7f3ee" , ease: "power3.out" })  
-        
-
-       
-    
-      
-     
-        return()=>{
-          tl.kill(false)
-          abortController.abort()
-          console.log('Sct3 killed')
-        }
-
-    },[])
+ 
         
   const logoUper =[
     logo1,
@@ -116,7 +87,7 @@ logo23,
      
   ]
   return (  
-    <div className=' px-[1%] container33' ref={Sct33}>
+    <div className=' px-[1%] min-h-fit gap-[5vh] h-[110vh]  container33' ref={Sct33}>
     
         <div className='Upper'>
             <div className=' uppercase w-[31vw] text-aCaption font-title2-caption '> {`(Các đối tác)`}</div>

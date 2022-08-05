@@ -3,8 +3,8 @@ import gsap from 'gsap'
 import React, { useEffect, useRef, useState } from 'react'
 import { Observer } from "gsap/Observer";
 import { useSelector ,useDispatch } from 'react-redux';
-import {Link, NavLink, Outlet} from "react-router-dom"
-import { offStatic, onStatic, primaryBGBlack } from './redux/navSlice';
+import {Link, NavLink} from "react-router-dom"
+import { isOffNav, isOnNav, onStatic } from './redux/navSlice';
 gsap.registerPlugin( Observer);
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function () {
@@ -71,7 +71,8 @@ const goTop=()=>{
     const handleToggle = () => {
       
         if(!isOpen){
-        
+         
+          setTimeout(()=>{ dispacth(isOnNav())},1000)
           const  tl = gsap.timeline({onComplete:()=>{
             gsap.to(menu.current,{duration:0.2,translateY:"0",opacity:1,display:'flex'})
             gsap.to(menu2.current,{duration:0.2,translateY:"0",opacity:1,display:'flex'})
@@ -103,7 +104,7 @@ const goTop=()=>{
             const  tl = gsap.timeline({onComplete:()=>{
               gsap.to(menu.current,{duration:0.2,translateY:"0",opacity:1,display:'flex'})
               gsap.to(menu2.current,{duration:0.2,translateY:"0",opacity:1,display:'flex'})
-             
+             dispacth(isOffNav())
               setIsOpen(!isOpen)
               setisButton(false)
             }
@@ -129,7 +130,7 @@ const goTop=()=>{
           if(!isOpen){
 
               gsap.to(Nav.current,{
-                  duration:0.5,
+                  duration:0.1,
                   overwrite:true,
                   translateY:"-300",
                   ease:"back.out"
@@ -140,7 +141,7 @@ const goTop=()=>{
         if(!isOpen){
           gsap.to(Nav.current,{
               
-              duration:0.5,
+              duration:0.1,
               overwrite:true,
               translateY:"",
               ease:"back.out"
@@ -197,9 +198,9 @@ const goTop=()=>{
                             </div>
                             <div className=' flex items-end h-[25vh] '>
                                 <div className='h-[7rem] w-[50%]'>
-                                <img className='h-[7rem] w-[7rem]  object-fill ' src={require('./Asset/Nav/logo.svg').default} alt="123" />
+                                <img className='h-[7rem] w-[7rem]  object-contain ' src={require('./Asset/Nav/logo.png')} alt="123" />
                                 </div>
-                                <div className='flex gap-[7vw] items-end pb-[2.3vh] text-[0.8vw]  h-[7rem]  w-[50%] text-[#F7F3EE] '>
+                                <div className='flex   items-end pb-[2.3vh] text-[0.8vw]  h-[7rem] justify-between  w-[40%] text-[#F7F3EE] '>
                                 <div className=' ' >
                                   <div>STUDIO</div>
                                   <div>ĐÀ LẠT, LÂM ĐỒNG</div>
@@ -223,11 +224,11 @@ const goTop=()=>{
      </div>
     <div className="flex px-[2%]  justify-between   h-[100%] items-center ">
         <div className='flex gap-5 items-center    ' ref={menu}>
-          {!isOpen? <Link onClick={handleToggle} to='/'><button className={`${button} z-10 `}>TRANG CHỦ</button></Link>:<Link onClick={handleToggle} to='/'><button className={`${buttonOpen} z-10 `}>TRANG CHỦ</button></Link> }
+          {!isOpen? <Link  to='/'><button className={`${button} z-10 `}>TRANG CHỦ</button></Link>:<Link onClick={handleToggle} to='/'><button className={`${buttonOpen} z-10 `}>TRANG CHỦ</button></Link> }
            
         </div>
         <div className=" spacer  w-[50%] "></div>
-        <div className='flex min-w-fit gap-[5vw]'ref={menu2} >
+        <div className='flex min-w-fit gap-[5rem]'ref={menu2} >
            {!isOpen? <button onClick={()=>dispacth(onStatic() )} className={`${button} flex items-center gap-1 `}> <span>GIỎ</span> {quantity.length===0?"":<span className='  font-[400] text-sm '>{quantity.length<10?`(0${quantity.length})`:`(${quantity.length})`}</span>}</button>:''}
             {!isOpen? <button disabled={isButton} onClick={()=>{
               setisButton(true)

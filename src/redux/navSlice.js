@@ -13,8 +13,10 @@ const navSlice = createSlice({
         eventDetail:false
       },
       static:false,
-      cart:[]
-     
+      cart:[],
+      isOn:false,
+      isBuySuccess:false
+      
       
     },
     reducers:{
@@ -49,8 +51,19 @@ const navSlice = createSlice({
       updateNumber:(state,action)=>{
         state.cart =action.payload
  
+      },
+      isOnNav:(state)=>{
+        state.isOn = true
+      },
+      isOffNav:(state)=>{
+        state.isOn = false
+      },
+      successBuy:(state)=>{
+        state.isBuySuccess= true
+      },
+      successBuyFaild:(state)=>{
+        state.isBuySuccess= false
       }
-
        
     }
 })
@@ -62,6 +75,11 @@ export const {
 offEventCart,
 onStatic,
 offStatic,
-updateNumber
+updateNumber,
+isOnNav
+      ,
+isOffNav,
+successBuy,
+successBuyFaild
 } = navSlice.actions
 export default navSlice.reducer

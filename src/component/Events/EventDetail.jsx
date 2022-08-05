@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {   useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate,useParams  } from "react-router-dom";
-import { offEventCart, onEventCart, primaryBG, primaryBGBlack } from "../../redux/navSlice";
+import { offEventCart, onEventCart, primaryBG } from "../../redux/navSlice";
 import 'react-calendar/dist/Calendar.css';
  
  
@@ -21,7 +21,7 @@ function EventDetail() {
   
   // const event=events1.oneEvent
   const [isLoading, setIsLoading] = useState(true)
-  const [isOpen, setIsOpen] = useState(false)
+  
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -168,7 +168,7 @@ useUpdateEffect(()=>{
         <div className="   w-[100%] h-[auto]  flex flex-col  " >
         <div onClick={()=>navigate(-1)} className=" cursor-pointer min-w-[12%] items-center flex gap-3">
          <span className=" flex items-center justify-center "> 
-         <img src={require("./arrowback.svg").default} alt="error" className=" h-[11px] w-[15px] " /> 
+         <img src={require("./ar.png")} alt="error" className=" object-contain h-[18px] w-[18px] " /> 
          </span> 
          <span className="   text-aCaption font-normal uppercase ">{`quay lại ${tab||"tất cả"}`} <div className=" border-t-[1px] mt-[-0.4vh] border-primaryBlack w-[100%]" ></div></span>
         </div>
@@ -214,10 +214,10 @@ useUpdateEffect(()=>{
   
         </div>
         </div>
-         <div className="  h-[auto] w-[100%]  "> <img className=" rounded-[20px] object-cover w-[100%] h-[120vh] object-center " src={event.heroPic} alt="" /> </div>
+         <div className="  h-[auto] w-[100%]  "> <img className=" rounded-[20px] object-cover w-[100%] h-[100vh] object-center " src={event.heroPic} alt="" /> </div>
          <div className=" mt-[12vh] h-[auto] py-[5%] flex">
           <div className=" text-aCaption font-title2-caption uppercase w-[40%] "> {`(Về sự kiện)`} </div>
-          <div className="text-aPara gap-[5vh] flex flex-col border-2  font-p w-[60%]">
+          <div className="text-aPara gap-[5vh] flex flex-col   font-p w-[60%]">
             {event.discription?.map((item,i)=>{
               return(
                 <div style={{ wordWrap: "break-word" }} key={i} className="  break-words whitespace-pre-wrap w-[100%]" >

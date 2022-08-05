@@ -6,7 +6,7 @@ import { getCateFailed, getCateStart, getCateSuccess, getProductsFailed, getProd
 import { getProjectFailed, getProjectStart, getProjectSuccess } from "../redux/projectSlice";
 import { deleteUserFailed, deleteUserStart, deleteUserSuccess, getUsersFailed, getUsersStart, getUsersSuccess } from "../redux/userSlice";
 
-const URL = 'http://localhost:8001/api'
+const URL = 'https://phobendoi.art/api'
 
 export const fetchProducts =async (dispatch)=>{ 
     dispatch(getProductsStart())
@@ -95,8 +95,12 @@ export const loginUser = async (user, dispatch )=>{
         dispatch(loginSuccess(res.data))
       
     } catch (error) {
-        dispatch(loginFailed(error))
-        
+
+        dispatch(loginFailed(error.response.data.message))
+      
+        return error.response.data.message
+            
+      
     }
 }
 export const registerUser = async(user,dispatch,role,currentUser,navi)=>{
@@ -116,7 +120,7 @@ export const registerUser = async(user,dispatch,role,currentUser,navi)=>{
             return res.data.message
         }
 
-        return console.log(res)
+        return 
      
     } catch (error) {
         
@@ -214,6 +218,16 @@ export const createEvent = async (dispatch,event,navigate)=>{
     try {
       
         const res = await axios.get(`${URL}/event/get-all-event`);
+        dispatch(getEventSuccess(res.data));
+    } catch (error) {
+        dispatch(getEventFailed(error))
+    }
+}
+export const getAllEventAdminBlock= async(dispatch)=>{
+    dispatch( getEventStart() )
+    try {
+      
+        const res = await axios.get(`${URL}/event/get-all-event-admin`);
         dispatch(getEventSuccess(res.data));
     } catch (error) {
         dispatch(getEventFailed(error))
@@ -319,7 +333,7 @@ export const getEventByIdAdmin= async( id)=>{
     try {
       
         const res = await axios.get(`${URL}/event/get-one-admin/`+id);
-            console.log(res.data)
+          
             return res.data
     } catch (error) {
          return console.log(error)

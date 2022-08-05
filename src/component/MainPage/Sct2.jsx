@@ -91,15 +91,15 @@ function Section2() {
   const transYImg2='  h-[39vh] w-[25vw]  object-cover  rounded-[20px] w-[25vw]'
   const [paragraph1,setParagraph1]= useState('Phố Bên Đồi - "Nghệ thuật kết nối chúng ta" là một dự án nghệ thuật đa hình thái đầu tiên tại Đà Lạt, được tổ chức thường niên với mục tiêu biến Đà Lạt trở thành một điểm đến văn hóa độc đáo của Đông Nam Á.')
   return (
-    <>
+    <div className=' '>
     <div className=" h-[auto] bg-[#F7F3EE]  justify-center    w-screen flex flex-col">
      
         <div ref={polygon} style={{ clipPath: "ellipse(80% 50% at 50% 50%)"}}  className=' flex justify-center items-center non-Rec bg-[#FFDD00] h-[150vh] w-screen '>
-        <img ref={pic1} style={{ borderRadius:"45rem "}} className='  h-[95vh] object-cover  w-[30vw]' src={require('../../Asset/Mainpage/centerimg.svg').default} alt="" />
+        <img ref={pic1} style={{ borderRadius:"45rem "}} className='  h-[95vh] object-cover  w-[30vw]' src={"https://live.staticflickr.com/65535/52253824580_5c9371c1b9_o.png"} alt="" />
         <img ref={text1} className='  h-[20vh] object-contain  absolute w-[10vw]' src={require('../../Asset/Mainpage/cityOfArt.svg').default} alt="" />
       </div>
     </div>
-    <div className="h-screen px-[2%] bg-[#F7F3EE]  justify-center items-start gap-[5rem]  w-screen flex flex-col">
+    <div className=" min-h-screen pt-[200px] px-[2%] bg-[#F7F3EE]  justify-center items-start gap-[5rem]  w-screen flex flex-col">
       <div className=' leading-[1.2]   w-[86vw] font-[500] text-[3.6rem]'>
         <span className=' pr-[7vw] font-normal text-[1vw]'>{`(VỀ CHÚNG TÔI)`}</span>{paragraph1}
       </div>
@@ -110,64 +110,51 @@ function Section2() {
       </div>
 
     </div>
-    <div className="h-[350vh]   bg-[#F7F3EE] w-[100vw] gap-1 flex justify-center   "  >
+    <div className="h-[330vh] pt-[200px]   bg-[#F7F3EE] w-[100vw] gap-1 flex justify-center   "  >
       <div  ref={contain} className='  h-[95vh]  w-[98w]  gap-5  overflow-x-hidden flex items-center    '>
      
         <div className='min-w-[30vw]'></div>
        <div className=' min-w-[52vw] items-center flex gap-5 '>
 
-       <img className=' mt-[-7%] h-[80vh] object-cover rounded-[20px] w-[25vw]' src={require('../../Asset/Mainpage/img4.svg').default} alt="" />
+       <img className=' mt-[-7%] h-[80vh] object-cover rounded-[20px] w-[25vw]' src={"https://live.staticflickr.com/65535/52253443468_f86151be8b_o.png"} alt="" />
        <div  className=' mt-[7%] flex flex-col gap-5  w-[25vw] h-[80vh] '>
-       <img className={transYImg2} src={require('../../Asset/Mainpage/hinh2.svg').default} alt="" />
+       <img className={transYImg2} src={"https://live.staticflickr.com/65535/52253443443_b678371a49_o.png" } alt="" />
        
 
-       <img className={transYImg3} src={require('../../Asset/Mainpage/img3.svg').default} alt="" />
+       <img className={transYImg3} src={"https://live.staticflickr.com/65535/52253422531_2054de0f64_o.png"} alt="" />
       
        </div>
        </div>
        <div className=' min-w-[52vw] items-center flex gap-5 '>
-       <img className=' mt-[-7%] h-[80vh] object-cover rounded-[20px] w-[25vw]' src={require('../../Asset/Nav/img1.svg').default} alt="" />
+       <img className=' mt-[-7%] h-[80vh] object-cover rounded-[20px] w-[25vw]' src={"https://live.staticflickr.com/65535/52253920905_85665dfcb6_o.png"} alt="" />
 
 <div  className=' mt-[7%] flex flex-col gap-5  w-[25vw] h-[80vh] '>
-<img className={transYImg2} src={require('../../Asset/Mainpage/img5.svg').default} alt="" />
+<img className={transYImg2} src={"https://live.staticflickr.com/65535/52252454037_9e443933be_o.png"} alt="" />
 
 
-<img className={transYImg3} src={require('../../Asset/Mainpage/img6.svg').default} alt="" />
+<img className={transYImg3} src={"https://live.staticflickr.com/65535/52253442753_082b153f22_o.png"} alt="" />
 
 </div>
        </div>
        <div className=' min-w-[52vw] items-center flex gap-5 '>
 
-      <img className=' mt-[-7%] h-[80vh] object-cover rounded-[20px] w-[25vw]' src={require('../../Asset/Mainpage/img7.svg').default} alt="" />
+      <img className=' mt-[-7%] h-[80vh] object-cover rounded-[20px] w-[25vw]' src={"https://live.staticflickr.com/65535/52253708229_d754c65013_o.png"} alt="" />
       <div  className=' mt-[7%] flex flex-col gap-5  w-[25vw] h-[80vh] '>
-      <img className={transYImg2} src={require('../../Asset/Mainpage/img8.svg').default} alt="" />
+      <img className={transYImg2} src={"https://live.staticflickr.com/65535/52253443348_b882e0fca6_o.png"} alt="" />
 
 
-      <img className={transYImg3} src={require('../../Asset/Mainpage/img9.svg').default} alt="" />
+      <img className={transYImg3} src={"https://live.staticflickr.com/65535/52253422471_20011795a8_o.png"} alt="" />
 
       </div>
        </div>
        <div className=' min-w-[52vw] items-center flex gap-5 '>
 
-<img className=' mt-[-7%] h-[80vh] object-cover rounded-[20px] w-[25vw]' src={require('../../Asset/Mainpage/img10.svg').default} alt="" />
+<img className=' mt-[-7%] h-[80vh] object-cover rounded-[20px] w-[25vw]' src={"https://live.staticflickr.com/65535/52252454067_b31db3de50_o.png"} alt="" />
 
  </div>
-   
-       
-       
-      
- 
-       
-
-    
-       
-       
-
-       
- 
       </div>
     </div>
-    </>
+    </div>
     );
 }
 

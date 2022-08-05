@@ -1,6 +1,6 @@
 
 
-import React,{useRef,useState,useEffect}  from "react"
+import React,{ useState }  from "react"
 
 import {gsap} from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 gsap.registerPlugin(Flip,ScrollTrigger);
 function Section4() {
 
-    const [child,setChild]=useState(false)
-    const picMain = require('../../Asset/Mainpage/picArrow.svg')
+ 
+ 
 
     const stage = [
         {
@@ -39,7 +39,7 @@ function Section4() {
         
 
   return (  
-   <div className=" bg-[#F7F3EE] px-[2%] flex flex-col justify-center items-start w-screen">
+   <div className=" pt-[160px] pb-[170px] bg-[#F7F3EE] px-[2%] flex flex-col justify-center items-start w-screen">
         <div className=" pb-[5vw]  flex">
             <div className="mt-[2vw] w-[29.5vw] xl:text-[1vw] ">{`(DỊCH VỤ)`}</div>
             <div className=" gap-[12vw] flex"> 
@@ -50,12 +50,12 @@ function Section4() {
                 </div>
             </div>
         </div>
-        <div className=" h-screen w-screen flex ">
-            <div className="w-[30vw]">
+        <div className="     h-fit w-[96vw] flex ">
+            <div className="  selection:  w-[29.5vw]">
                 {/* {child?"":<img className=" object-contain rounded-none h-[8vw] w-[8vw] " src={picMain.default} alt="123" />} */}
             </div>
             <Link to={'/work'}>
-            <div className=" flex flex-col">
+            <div className="     flex w-[60vw] flex-col">
                 {
                     stage.map((item,index)=>{
                         return(
@@ -65,9 +65,9 @@ function Section4() {
                             // }}
                             // onMouseEnter={()=>{
                             //     setChild(true)}} 
-                                id={index} key={index} className=" group w-[67.7vw] hover:w-[70vw] flex flex-col justify-center hover:h-[35vh] h-[25vh]   ">
-                                 <div className=" font-[600] gap-3 flex items-center text-[6.875vw] "> <span className=" group-hover:font-semibold group-hover:ease-in-out duration-300 group-hover:translate-y-[7.6vw] font-[500] mt-[-7.5vh] text-[1vw]">{`0${index+1}`}</span> <span> <img className=" translate-y-[-3vh] translate-x-[-2vw] hidden group-hover:inline-block w-[42px]  h-[42px]" src={require('./img/arrrow.svg').default} alt="" /> </span> <span className="  group-hover:ease-in-out duration-300 group-hover:translate-x-[-2vw] leading-[6vw]">{item.title}</span> </div>
-                                <div className="  group-hover:ease-in-out duration-300 group-hover:h-[10vh] h-[5vh]    border-b border-b-[#1B1D21]  w-[66vw] flex pl-[2.5vw] text-[1vw] gap-12">
+                                id={index} key={index} className=" group w-[58vw]   flex flex-col justify-center hover:h-[35vh] h-[25vh]   ">
+                                 <div className=" font-[600] gap-3 flex items-center text-[6rem] "> <span className=" group-hover:font-semibold group-hover:ease-in-out duration-300 group-hover:translate-y-[7.6vw] font-[500] mt-[-7.5vh] text-[1vw]">{`0${index+1}`}</span> <span> <img className=" translate-y-[-3vh] translate-x-[-2vw] hidden group-hover:inline-block w-[42px]  h-[42px]" src={require('./img/arrrow.svg').default} alt="" /> </span> <span className="  group-hover:ease-in-out duration-300 group-hover:translate-x-[-2vw] leading-[6vw]">{item.title}</span> </div>
+                                <div className="  group-hover:ease-in-out duration-300 group-hover:h-[10vh] h-[5vh]    border-b border-b-[#1B1D21] w-full flex pl-[2.5vw] text-[1vw] gap-12">
                                    {/* { 
                                    index===0?<div className=" delay-200  group-hover:ease-bounced duration-1000 group-hover:duration-1000  group-hover:translate-y-[-5vw]  translate-x-[-30vw]  w-[30vw] absolute">
                                     <img className=" delay-200  group-hover:ease-bounced duration-500 group-hover:duration-500 w-[25vw]  rounded-[40rem] group-hover:h-[38vw] h-0 object-cover"  src={item.pic.default} alt="123" />

@@ -237,7 +237,7 @@ const hanleSelected =(i,option)=>{
     sethandleSelect(i)
     setoptionSelected(option)
     setslot(1)
-    console.log({optionSelected})
+ 
   }
   
 }
@@ -252,9 +252,11 @@ useEffect(()=>{
   }
   
 },[cart,isChange])
-console.log(cart)
-const addToCart= (item, option)=>{
  
+const addToCart= (item, option)=>{
+  if(item._id==="none"){
+    return alert('Tính năng này sẽ sớm đc ra mắt !')
+  }else{
   const cartItem ={
     name:item.name,
     quantity:slot,
@@ -305,7 +307,7 @@ const addToCart= (item, option)=>{
     return setslot(1)
   } 
   }
- 
+}
 
 }
 
@@ -512,8 +514,14 @@ if(isLoading){
   
                     { item.option.map((optionItem,i)=>{
                       return(
-                        <div   onClick={()=>hanleSelected(i,optionItem)}  className={` ${handleSelect===i?" bg-primaryBlack text-white ":""}    min-w-[49%] shrink-0 justify-center items-center h-fit rounded-[3rem] py-[1.2vh] border border-primaryBlack group-focus-within:flex hidden `} key={optionItem.style}>
-                          <span className=" text-aCaption font-title2-caption">{optionItem.style}</span> 
+                        <div   onClick={()=>{
+                          if(optionItem.number>0){
+                            hanleSelected(i,optionItem)
+                          }else{
+                            alert('Phiên bản này đã hết hàng xin vui lòng thử lại sau !')
+                          }
+                        }}  className={` ${handleSelect===i?" bg-primaryBlack text-white ":""}    min-w-[49%] shrink-0 justify-center items-center h-fit rounded-[3rem] py-[1.2vh] border border-primaryBlack group-focus-within:flex hidden `} key={optionItem.style}>
+                          <span className=" text-aCaption font-title2-caption">{optionItem.number>0?optionItem.style:"hết hàng"}</span> 
                         </div>
                       )
                     })}

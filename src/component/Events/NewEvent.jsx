@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom"
 import { getAllEvent, getEventById } from "../../api"
 import vi from 'date-fns/locale/vi'
 import { format, parseISO } from "date-fns"
+import _ from "lodash"
 function NewEvent() {
 
 
@@ -16,7 +17,8 @@ const dispatch = useDispatch()
 
 const openingList = useSelector((state)=>state.event.events.allEvent)
 
-const list = openingList.filter(value=>value.eventStatus===1)
+const rawList =openingList.filter(value=>value.eventStatus===1)
+const list = _.orderBy(rawList,[item=>item.createdAt],['desc'])
 
 
 
@@ -33,7 +35,7 @@ return (
   
   <div className=" h-auto w-[100%] flex flex-col gap-[12vh]  ">
     {
-      list.map((item,i)=>{
+      list?.map((item,i)=>{
 
         return (
              

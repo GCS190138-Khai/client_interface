@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { useDispatch,useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
-import { primaryBG, primaryBGBlack } from "../../redux/navSlice";
-import Select from 'react-select'
+import { useDispatch  } from "react-redux";
+import {   useNavigate } from "react-router-dom";
+import { primaryBG   } from "../../redux/navSlice";
+ 
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange, Calendar } from 'react-date-range';
 import { createEvent } from "../../api";
-import { addDays, endOfDay, set, startOfDay } from "date-fns";
+import { addDays, endOfDay,   startOfDay } from "date-fns";
 import vi from 'date-fns/locale/vi'
-import { format } from "date-fns/esm";
-import { useEffect } from "react";
+ 
  
 
 
@@ -18,7 +17,7 @@ import { useEffect } from "react";
 
 function InputEvent() {
    
-  const location = useLocation()
+  
   const navigation = useNavigate()
   // const {tab } = location.state===null?"tất cả":location.state
 

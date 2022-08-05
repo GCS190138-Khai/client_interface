@@ -85,7 +85,9 @@ const [count, setCount] = useState({
 
 
     return (  
-      <div className=" text-[#1B1D21]  h-[180vh] flex items-center bg-[#F7F3EE] w-screen" >
+      <>
+      <div className='spacer bg-[#F7F3EE] w-screen h-[65px]'></div>
+      <div className=" text-[#1B1D21] pt-[]  h-[1300px] flex items-center bg-[#F7F3EE] w-screen" >
          <div ref={container} className=" px-[2%] opacity-0 justify-center flex-col items-center flex h-[80%] w-screen rounded-[40rem] bg-[#ffdd00] ">
            <div className=" flex items-center w-full ">
            <div className=" w-[30vw] font-[500] text-aCaption ">{`(SỰ KIỆN VÀ HOẠT ĐỘNG)`}</div>
@@ -103,7 +105,7 @@ const [count, setCount] = useState({
              </button>
              <button onClick={()=>{
                setTab(true)
-               setPics(require('../../Asset/Mainpage/hinh2.svg'))
+             
              }} className={tab?"w-[15vw] flex justify-end gap-2":" opacity-40 w-[15vw] flex justify-end gap-2"}>
                <div className="  text-aSubtitle font-[500]">
                Sắp Diễn Ra
@@ -117,20 +119,20 @@ const [count, setCount] = useState({
            {!tab ?
            
            <div className=" group h-[100%] w-[100%] flex justify-center items-center  rounded-[40rem]">
-           <img className=" object-cover h-[100%] w-[100%] rounded-[40rem]" src={count.openingList.length===0? "https://live.staticflickr.com/65535/52248989095_1f7832b306_o.png":count.openingList[0]?.heroPic} alt="1234" />
+           <img className=" object-cover h-[100%] w-[100%] rounded-[40rem]" src={count.openingList.length===0? "https://live.staticflickr.com/65535/52248989095_1f7832b306_o.png":count.openingList[count.openingList.length-1]?.heroPic} alt="1234" />
            <div className=" text-[#ffdd00] flex-col hidden group-hover:flex justify-center items-center rounded-[40rem]  h-[100%] w-[100%] absolute ">
                <div className=" absolute rounded-[40rem]  bg-[#000000]  opacity-50 h-[100%] w-[100%] "></div>
-                 <div className=" z-20 font-[600]  text-aTitle1">{count.openingList.length===0?"Chưa có sự kiện nào":count.openingList[0]?.name}</div>
+                 <div className=" z-20 font-[600] w-[90%]  text-aTitle1">{count.openingList.length===0?"Coming soon !":count.openingList[count.openingList.length-1]?.name}</div>
                  
                  <button className=" z-20 flex gap-4"><img className=" translate-y-[-0.4vw] rounded-none object-cover h-[1.5vw] w-[1.5vw]" src={require('../../Asset/Mainpage/yellowArrow.svg').default} alt="error" /> <Link to={"/event/newEvent"}><span className="  font-bold text-[1.1722vw] underline underline-offset-1" >XEM TẤT CẢ</span></Link> </button>
                  </div>
            </div>:
            
            <div  className=" h-[100%] w-[100%] group flex justify-center items-center  rounded-[40rem]">
-           <img className=" object-cover h-[100%] w-[100%] rounded-[40rem]" src={count.iscoming.length===0? "https://live.staticflickr.com/65535/52248989095_1f7832b306_o.png":count.openingList[0]?.heroPic} alt="1234" />
+           <img className=" object-cover h-[100%] w-[100%] rounded-[40rem]" src={count.iscoming.length===0? "https://live.staticflickr.com/65535/52248989095_1f7832b306_o.png":count.iscoming[count.iscoming.length-1]?.heroPic} alt="1234" />
              <div className=" text-[#ffdd00] flex-col hidden group-hover:flex justify-center items-center rounded-[40rem]  h-[100%] w-[100%] absolute ">
                <div className=" absolute rounded-[40rem]  bg-[#000000]  opacity-50 h-[100%] w-[100%] "></div>
-                 <div className=" z-20 font-[00] text-aTitle1">{count.iscoming.length===0?"Chưa có sự kiện nào":count.iscoming[0]?.name}</div>
+                 <div className=" z-20 font-[00] text-aTitle1">{count.iscoming.length===0?"Coming soon !":count.iscoming[count.iscoming.length-1]?.name}</div>
                  
                  <button className=" z-20 flex gap-4"><img className=" translate-y-[-0.4vw] rounded-none object-cover h-[1.5vw] w-[1.5vw]" src={require('../../Asset/Mainpage/yellowArrow.svg').default} alt="error" /> <Link to={"/event/iscoming"} ><span className="  font-bold text-[1.1722vw] underline underline-offset-1" >XEM TẤT CẢ</span></Link> </button>
                  </div>
@@ -140,6 +142,7 @@ const [count, setCount] = useState({
            </div>
          </div>        
       </div>
+      </>
     );
   }
 

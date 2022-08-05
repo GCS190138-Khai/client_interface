@@ -22,8 +22,9 @@ import Nabar from './Nabar';
 import Footer from './footer';
 import EventCart from './eventCart';
 import { getEventPayment } from './selector';
-import { offEventCart } from './redux/navSlice';
+import { isOffNav, offEventCart } from './redux/navSlice';
 import ShopCart from './Cart';
+import Bought from './BuyingSuccess';
 gsap.registerPlugin(ScrollTrigger );
 
 
@@ -40,6 +41,9 @@ function App() {
    
   const eventCart = useSelector((state)=>getEventPayment(state))
   const isStatic = useSelector((state)=>state.nav.static)
+  const isOn = useSelector((state)=>state.nav.isOn)
+  const isBuySuccess = useSelector((state)=>state.nav.isBuySuccess)
+  
   const [isLoading, setIsLoading] = useState(true)
   // useEffect(()=>{
 
@@ -56,7 +60,7 @@ function App() {
       (async () => {
         await    getAllEvent(dispatch) 
        
-        return setIsLoading(false)
+        return  setIsLoading(false)
          
        
       })();
@@ -64,6 +68,7 @@ function App() {
   
       
     }
+ 
     return ()=>{
       arbort.abort()
      }
@@ -71,8 +76,10 @@ function App() {
   useEffect(()=>{
     dispatch(offEventCart())
   },[])
- 
- 
+
+useEffect(()=>{
+  dispatch(isOffNav())
+},[isLoading])
 if(isLoading){
   return(
     <div>
@@ -93,15 +100,23 @@ if(isLoading){
 
       return (  
         <>
-        <div className="App"  ref={body}>
+        <div  className="App"  ref={body}>
       
           {eventCart.isOpen?<EventCart></EventCart>:""}
           <div className=' z-50'>
-          <Nabar  ></Nabar>
+          <Nabar></Nabar>
           </div>
           <div className=' -z-10'>
           {isStatic?<ShopCart></ShopCart>:""}
-          <Outlet></Outlet>
+          {isBuySuccess?<Bought></Bought>:""}
+          {isOn?
+          <div className=" gap-[50px] text-[32px] flex flex-col items-center justify-center h-screen w-screen">
+
+              <span>Loading..., Nếu trang vẫn không load được bạn hãy nhấn vào nút bên dưới!</span>
+              <span className=' border border-primaryBlack  cursor-pointer' onClick={()=>{ dispatch(isOffNav())}} > Bấm vào đây để thử lại</span>
+
+          </div>
+          :<Outlet></Outlet>}
           </div>
           <Footer></Footer>
         </div>
