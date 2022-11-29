@@ -52,7 +52,7 @@ if(isLoading){
   return ( 
   
   
-  <div className=" h-auto w-[100%] flex flex-col gap-[12vh]  ">
+  <div className=" h-auto w-[100%] flex flex-col mb:gap-[2.5rem] gap-[12vh]  ">
     {
       list.map((item,i)=>{
   
@@ -62,19 +62,19 @@ if(isLoading){
           {/* <button className=" focus-within:absolute w-[5vh]  focus-within:w-[100%] focus-within:h-[50%] group focus-within:bg-red-600   h-[5vh] rounded-[50%] bg-black "></button> */}
          
           <Link key={i} onClick={()=>{ getEventById(dispatch,item._id)   }} state={{tab : "tất cả",event:item,}}  to={`${item._id}`} >
-          <div className=" w-[100%] gap-[1.5vh]  flex flex-col h-[50%]  ">
+          <div className=" w-[100%] mb:gap-[1.25rem] gap-[1.5vh]  flex flex-col h-[50%]  ">
            
-            <div className=" " > <img className="  rounded-[1rem] w-[100%] h-[65vh] object-center object-cover  " src={item.heroPic} alt="123" /> </div>
-          <div className=" text-aPara font-[500]"> {item.name} 
+            <div className=" " > <img className="  rounded-[1rem] w-[100%]   mb:h-[90vw] h-[65vh] object-center object-cover  " src={item.heroPic} alt="123" /> </div>
+          <div className=" text-aPara mb:text-16px leading-[1] font-[500]"> {item.name} 
           
-          <div className=" uppercase mt-[-0.7vh] text-aCaption font-title2-caption flex gap-1">
+          <div className=" mt-1  uppercase  text-aCaption mb:text-12px font-title2-caption mb:flex-wrap flex gap-1">
              
               <div>{format( new Date( item.startDate),"EEEE - dd.MM.yyyy",{ locale: vi })},</div> 
            
               <div>{dateHours( item.startHour, new Date(item.startDate).getMinutes()+item.startMin)}</div> 
               <div>-{dateHours( item.startHour+parseInt(item.duration), new Date(item.startDate).getMinutes()+item.startMin)},</div> 
               <div className=" uppercase">{item.eventStatus===1?`mở bán vé`:item.eventStatus===0?`sắp diễn ra`:`close`},</div>
-              <div className=" " >{item.ticketLimitationAtOnce===0?"miễn phí vào cổng ":`Vé vào cổng`}</div>
+              <div className=" " >{item.ticketLimitationAtOnce===0?"miễn phí vào cổng ":`vé vào cổng`}</div>
             </div>
           </div>
           

@@ -6,7 +6,7 @@ import { getCateFailed, getCateStart, getCateSuccess, getProductsFailed, getProd
 import { getProjectFailed, getProjectStart, getProjectSuccess } from "../redux/projectSlice";
 import { deleteUserFailed, deleteUserStart, deleteUserSuccess, getUsersFailed, getUsersStart, getUsersSuccess } from "../redux/userSlice";
 
-const URL = 'https://phobendoi.art/api'
+const URL = 'https://api.phobendoi.art/api'
 
 export const fetchProducts =async (dispatch)=>{ 
     dispatch(getProductsStart())
@@ -109,73 +109,29 @@ export const registerUser = async(user,dispatch,role,currentUser,navi)=>{
      const res =   await axios.post(`${URL}/auth/register`,user);
         dispatch(registerSuccess());
         
-        if(role==="admin"||role==="1"){
-
-            getAllUsers(currentUser.accessToken,dispatch)
-        }else{
+   
             if(!res.data.message){
 
              return   navi("/account")
             }
             return res.data.message
-        }
+      
 
-        return 
+       
      
     } catch (error) {
         
         dispatch(registerFailed(error))
     }
 }
-export const getAllUsers = async(accessToken,dispatch,axiosJWT)=>{
-    dispatch(getUsersStart())
-  
-    try {
-        if(!axiosJWT){
-            const res = await axios.get(`${URL}/user`,{
-                headers:{
-                    token:`Bearer ${accessToken}`
-                }
-            });
-            dispatch(getUsersSuccess(res.data));
-        }else{
 
-            const res = await axiosJWT.get(`${URL}/user`,{
-                headers:{
-                    token:`Bearer ${accessToken}`
-                }
-            });
-            dispatch(getUsersSuccess(res.data));
-        }
-        
-    } catch (error) {
-        dispatch(getUsersFailed())
-    }
-}
-
-export const deleteUser = async(accessToken,dispatch,id,role,axiosJWT)=>{
-        dispatch(deleteUserStart())
-        
-    try {
-    
-        const res = await axiosJWT.post(`${URL}/user/delete/`+id,role,{
-            headers:{
-                token:`Bearer ${accessToken}`
-            }
-        });
-        getAllUsers(accessToken,dispatch)
-        dispatch(deleteUserSuccess(res.data));
-        
-    } catch (error) {
-        dispatch(deleteUserFailed(error.res.data))
-    }
-}
 export const logOut = async(dispatch,id,navigate,accessToken,axiosJWT)=>{
     dispatch(logOutStart())
     try {
         await axiosJWT.post(`${URL}/auth/logout`,id,{
             headers:{token:`Bearer ${accessToken}`}
         })
+  
         dispatch(logOutSuccess())
         navigate("/")
     } catch (error) {

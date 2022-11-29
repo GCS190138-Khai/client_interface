@@ -8,6 +8,7 @@
     margin: 0;
   }
 };
+
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap');
 ::-webkit-scrollbar {
     background: transparent;
@@ -40,6 +41,8 @@ body {
   scroll-behavior: smooth !important;
   overflow-x: hidden !important;
   width: 100vw !important;
+  
+-webkit-overflow-scrolling: touch;
 
 }
 html{

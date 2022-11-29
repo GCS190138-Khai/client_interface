@@ -1,16 +1,15 @@
 import axios from "axios"
 
 import jwt_decode from "jwt-decode"
+import { loginSuccess } from "./redux/authSlice"
 
 
 
 
 
-  const refreshTonken=async()=>{
+  const refreshTonken=async(currentUser)=>{
         try {
-          const res = await axios.post(`https://phobendoi.art/api/auth/refresh`,{
-            withCredentials:true,
-          })
+          const res = await axios.post(`https://api.phobendoi.art/api/auth/refresh`,currentUser)
       
           return res.data
         } catch (error) {
@@ -21,22 +20,27 @@ export const createAxios = (currentUser,dispatch,stateSuccess) =>{
     
     const axiosJWT= axios.create()
     axiosJWT.interceptors.request.use(
-        
+    
         async(config)=>{
-            console.log(currentUser)
+          
           let date = new Date()
           const decodedToken =jwt_decode(currentUser.accessToken)
-          if(decodedToken.exp < date.getTime()/1000){
-             const data = await refreshTonken();
-  
+      
+          const check = decodedToken.exp*1000 < date.getTime()
+          
+          if(decodedToken.exp*1000 < date.getTime()){
+          
+             const data = await refreshTonken(currentUser);
+            
              const refreshUser ={
                ...currentUser,
                accessToken: data.accessToken,
-         
+               refreshToken: data.refreshToken
              }
-             dispatch(stateSuccess(refreshUser))
+             dispatch(loginSuccess(refreshUser))
              config.headers["token"]= "Bearer"+data.accessToken;
           }
+            
           return config
         },
         (error)=>{

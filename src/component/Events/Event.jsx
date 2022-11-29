@@ -79,19 +79,19 @@ return (
 )
 }else{
   return (
-      <div className=" bg-primary flex w-screen min-h-screen pb-[10vh] px-[2%] pt-[16vh] " >
+      <div className=" bg-primary flex mb:flex-col w-screen relative min-h-screen mb:pb-[6.25rem] pb-[10vh] mb:px-[20px] px-[2%] mb:pt-[6rem] pt-[16vh] " >
        
 
-        <div className=" h-[82vh] sticky top-[16vh] justify-between  w-[40%] flex flex-col">
-   
-          <div>
+        <div className=" h-[82vh] mb:h-fit mb:gap-[1.25rem] sticky mb:static top-[16vh] justify-between mb:w-full  w-[40%] flex flex-col">
+        <div className=" hidden mb:block leading-[1]  capitalize text-56px font-[500]"> sự kiện </div>
+          <div className=" mb:flex mb:flex-wrap mb:gap-4">
         {
           sideBar.map((item,i)=>{
             return(
               
-              <NavLink key={i} state={{ tab:item.title }} className={nav=>nav.isActive?"opacity-100 arrow ":"opacity-50"} end={i===0?true:false}    to={item.link} >
-              <div    className="  cursor-pointer text-aSubtitle font-title-Subtitle capitalize flex items-start gap-1 ">
-                {item.title} <span className=" text-aCaption font-title2-caption " >{item.number<10 ? `0${item.number}`:`${item.number}`} </span>
+              <NavLink key={i} state={{ tab:item.title }} className={nav=>nav.isActive?"opacity-100 notmb:arrow ":"opacity-50"} end={i===0?true:false}    to={item.link} >
+              <div    className=" mb:text-28px  cursor-pointer text-aSubtitle font-title-Subtitle capitalize flex items-start gap-1 ">
+                {item.title} <span className=" mb:text-12px text-aCaption font-title2-caption " >{item.number<10 ? `0${item.number}`:`${item.number}`} </span>
               </div>
            
               </NavLink>
@@ -99,10 +99,10 @@ return (
           })
         }
           </div>
-        <div className=" capitalize text-aTitle1 font-[600]"> sự kiện </div>
+        <div className=" hidden notmb:block capitalize text-aTitle1 font-[600]"> sự kiện </div>
         </div>
-        <div ref={container} className="sticky top-0 w-[60%]">
-        <div className=" flex  gap-1 h-[5vh] w-[100%] uppercase text-aCaption font-title2-caption ">
+        <div ref={container} className="sticky mb:static mb:mt-[2.5rem] mb:w-full top-0 w-[60%]">
+        <div className=" mb:hidden flex  gap-1 h-[5vh] w-[100%] uppercase text-aCaption font-title2-caption ">
         {`(lăn chuột)`}  <span> <img src={require("./sct1.png")} alt="error" /></span>
         </div>
         <Outlet></Outlet>

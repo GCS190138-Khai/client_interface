@@ -9,14 +9,14 @@ function Sct2() {
   const paragraph6= 'Thông qua các hình thức nghệ thuật đương đại, công nghệ, hoạt động cộng đồng và du lịch, Phố Bên Đồi khuyến khích công chúng nâng cao nhận thức về bảo tồn đô thị, bảo vệ môi trường và phát triển bền vững.'
   const pic = "https://live.staticflickr.com/65535/52253422656_40fecf4428_o.png"
   return ( <div className=" bg-primary w-screen ">
-        <div className="h-[120vh] px-[2%]  pt-[120px]   w-screen flex flex-col">
-      <div className=' flex   w-[100%] font-semibold   '>
-        <span className=' w-[32.5%]  font-normal text-aCaption'>{`(CÂU CHUYỆN)`}</span>
-        <div className='flex gap-[10.5vw]  w-[64.5%]'>
-          <div className=' w-[13vw] text-aSubtitle '>
+        <div className="min-h-[120vh] mb:min-h-fit px-[2%] mb:px-[20px] mb:pt-[100px]  pt-[120px]   w-screen flex flex-col">
+      <div className=' flex mb:flex-col   w-[100%] font-semibold   '>
+        <span className=' w-[32.5%] mb:text-12px  font-normal text-aCaption'>{`(CÂU CHUYỆN)`}</span>
+        <div className='flex gap-[10.5vw] mb:w-full  w-[64.5%]'>
+          <div className=' mb:hidden w-[13vw] text-aSubtitle opacity-0 '>
           “Đà Lạt - City of Arts”
           </div>
-          <div className=' text-aPara font-p flex flex-col gap-[2vh] items-end w-[33vw]  '>
+          <div className=' mb:w-full mb:text-16px text-aPara font-p flex flex-col gap-[2vh] items-end w-[33vw]  '>
             <div className='' >
               {paragraph1}
             </div>
@@ -30,17 +30,17 @@ function Sct2() {
         </div>
       </div>
     </div>
-    <div className=" h-fit pt-[120px] w-screen px-[2%]">
-        <img src={pic} alt="error" />
+    <div className=" min-h-fit mb:pt-[100px] mb:px-[0] pt-[120px] w-screen px-[2%]">
+        <img className=" mb:w-screen mb:object-cover mb:object-center mb:h-[37.5rem] " src={pic} alt="error" />
     </div>
-    <div className="h-fit pb-[120px] px-[2%]  pt-[120px]   w-screen flex flex-col">
-      <div className=' flex   w-[100%] font-semibold   '>
-        <span className=' w-[32.2%]  font-normal text-aCaption'>{`(SỰ PHÁT TRIỂN)`}</span>
-        <div className='flex gap-[42px]  w-[64.5%]'>
-          <div className=' w-[300px] text-aSubtitle capitalize '>
+    <div className=" min-h-fit mb:pb-[100px] mb:min-h-fit pb-[120px] mb:pt-[100px] mb:px-[20px] px-[2%]  pt-[120px]   w-screen flex flex-col">
+      <div className=' flex mb:flex-col   w-[100%] font-semibold   '>
+        <span className=' w-[32.2%]  font-normal mb:text-12px text-aCaption'>{`(SỰ PHÁT TRIỂN)`}</span>
+        <div className='flex gap-[42px] mb:w-full  w-[64.5%]'>
+          <div className=' mb:hidden w-[300px] text-aSubtitle capitalize opacity-0 '>
           Khẳng định uy tín trong nước và quốc tế
           </div>
-          <div className=' text-aPara font-p flex flex-col items-end w-[524px]  '>
+          <div className=' text-aPara mb:text-16px mb:w-full font-p flex flex-col items-end w-[524px]  '>
             <div className='' >
               {paragraph4}
             </div>

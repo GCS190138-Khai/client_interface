@@ -20,22 +20,22 @@ import AllEvents from './component/Events/AllEvent';
 import EventDetail from './component/Events/EventDetail';
 import NewEvent from './component/Events/NewEvent';
 import IsComingEvent from './component/Events/IsComingEvent';
-import IndexAdmin from './admin';
-import AllEventsAdmin from './admin/Event';
-import EventAdminDetail from './admin/EventAdminDetail';
+
 import ProductDetail from './component/Shop/productDetail';
 import Categories from './component/Shop/category';
 import Account from './component/account';
 import Login from './component/account/loggin';
 import Register from './component/account/resgister';
-import AdminContact from './admin/Contact';
+
 import CheckOut from './component/Shop/check_out';
 import CartFallBack from './component/Shop/cart_fall_back';
-import City from './admin/city';
-import NewProduct from './admin/addNewProduct';
-import AddNewGiftCode from './admin/addNewGiftCode';
-import BillList from './admin/billList';
-import BillDetail from './admin/billDetail';
+import Repass from './component/account/sercurity';
+import ForgotPassword from './component/account/forgotpassword';
+import { useWindowWidth } from '@react-hook/window-size';
+
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -48,7 +48,7 @@ ReactDOM.render(
     <Route path='/project/:id'  element = {<Project1/>} />
       <Route path='/'  element = {<App/>}>
       <Route path='cart' element={<CartFallBack></CartFallBack>}  > </Route>
-    <Route path='check_out' element={<CheckOut></CheckOut>}  > </Route>
+ 
           <Route  index  element = { <Mainpage />}/>
           <Route  path='aboutus' element = { <AboutUs />}/>
           <Route path='work/' element={<Work></Work>}>
@@ -78,24 +78,12 @@ ReactDOM.render(
           </Route>
               <Route path='event/:eventID' element={<EventDetail></EventDetail>}  ></Route>
 
-          <Route path='adminPhobendoi' element={<IndexAdmin></IndexAdmin>} >
-                <Route path="EventAdmin" element={<AllEventsAdmin></AllEventsAdmin>} >
-                </Route>
-                <Route path="ContactAdmin" element={<AdminContact></AdminContact>} >
-                </Route>
-                <Route path=':eventID' element={<EventAdminDetail></EventAdminDetail>}></Route>
-                <Route path="city" element={<City></City>} >
-                </Route>
-                <Route path="newProduct" element={<NewProduct></NewProduct>} ></Route>
-                <Route path="new_giftcode" element={<AddNewGiftCode></AddNewGiftCode>} ></Route>
-                <Route path="bill" element={<BillList></BillList>} >
-                </Route>
-                <Route path="thisbill/:billID" element={<BillDetail></BillDetail>} >
-                  
-                  </Route>
-          </Route>
-      </Route >
-
+  
+      </Route  >
+      <Route path='check_out' element={<CheckOut></CheckOut>}  > </Route>
+      <Route path='/re-password' element={<Repass></Repass>} >
+      </Route>
+    <Route path='/forgotpassword' element={<ForgotPassword></ForgotPassword>}></Route>
          {/* {role? <Route path='/adminPBD' element ={<Admin/>}/>:""} */}
         </Routes>  
 

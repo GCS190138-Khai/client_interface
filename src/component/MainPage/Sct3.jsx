@@ -87,13 +87,13 @@ logo23,
      
   ]
   return (  
-    <div className=' px-[1%] min-h-fit gap-[5vh] h-[110vh]  container33' ref={Sct33}>
+    <div className=' px-[1%] mb:pt-[190px] mb:pb-[140px] mb:px-[20px] min-h-fit pt-[110px]   container33' ref={Sct33}>
     
-        <div className='Upper'>
-            <div className=' uppercase w-[31vw] text-aCaption font-title2-caption '> {`(Các đối tác)`}</div>
-            <div className=" flex justify-between items-center  w-[68vw] ">
-              <div className=" capitalize text-aSubtitle font-[500]">thương hiệu hợp tác, nhà tài trợ Của Chúng tôi</div>
-              <img src={require('./img/backdown.svg').default} className=" w-[20px] h-[20px] " alt="" />
+        <div className='Upper mb:flex mb:flex-col mb:items-start '>
+            <div className=' uppercase w-[31vw] text-aCaption font-title2-caption mb:text-12px '> {`(Các đối tác)`}</div>
+            <div className=" flex justify-between items-center mb:w-full  w-[68vw] ">
+              <div className=" capitalize text-aSubtitle mb:text-28px font-[500]">thương hiệu hợp tác, nhà tài trợ Của Chúng tôi</div>
+              <img src={require('./img/backdown.svg').default} className=" mb:hidden w-[20px] h-[20px] " alt="" />
             </div>
         </div>
         <div className={"wrap  items-center " } ref={cont}  >

@@ -20,6 +20,10 @@ const authSlice = createSlice({
         role:{
             isAdmin:false
         },
+        logOut:{
+            isFetching:false,
+            error: false
+        }
       
       
     },
@@ -30,7 +34,7 @@ const authSlice = createSlice({
         loginSuccess: (state,action)=>{
             state.login.isFetching=false;
             state.login.currentUser= action.payload;
-            if(action.payload.role[0]==="1"){
+            if(action.payload.role==="1"){
                state.role.isAdmin=true;
             }
             state.login.error=false;
@@ -72,17 +76,17 @@ const authSlice = createSlice({
          
         },
         logOutStart: (state)=>{
-            state.login.isFetching=true;
+            state.logOut.isFetching=true;
         },
         logOutSuccess: (state)=>{
-            state.login.isFetching=false;
+            state.logOut.isFetching=false;
             state.login.currentUser= false;    
-            state.role.isAdmin=false;    
-            state.login.error=false;
+         
+            state.logOut.error=false;
         },
         logOutFailed: (state)=>{
-            state.login.isFetching=false;
-            state.login.error=true;
+            state.logOut.isFetching=false;
+            state.logOut.error=true;
         },
     }
 })

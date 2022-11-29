@@ -47,7 +47,14 @@ module.exports = {
         'docnhalang': "url('https://live.staticflickr.com/65535/52253442418_dcbffc95a5_o.png')",
         'steam': "url('https://live.staticflickr.com/65535/52253921060_5846d295c2_o.png')",
         'artTech':"url('https://live.staticflickr.com/65535/52252463067_221b4d3acd_o.png')",
-        'shop':"url('/src/component/Shop/heropic.svg')"
+        'shop':"url('/src/component/Shop/heropic.svg')",
+        "cart":"url('/src/gio.svg')",
+        "menu":"url('/src/menu.svg')",
+        "wmenu":"url('/src/whitemenu.svg')",
+        "closemenu":"url('/src/crossmb.svg')",
+        'wcart':"url('/src/wgio.svg')",
+        "logo":"url('/src/Asset/Nav/logo.svg')",
+        "linkArrow":"url('/src/arrowLink.png')"
         
        
       },
@@ -64,6 +71,13 @@ module.exports = {
         'aTitle2Vw': '4rem',
         'aTitle1': '6rem',
         'aTitle1Vw': '6.875vw',
+        '56px':'3.5rem',
+        '30px':"1.875rem",
+        '28px':"1.75rem",
+        '16px':"1rem",
+        '12px':'0.75rem',
+
+        
       },
       fontWeight: {
         'title-Subtitle':500,
@@ -71,7 +85,12 @@ module.exports = {
         'p':300,
         'button':600,
         'button-sec':500,
-        'caption-600':600
+        'caption-600':600,
+        '500':500,
+        '300':300,
+        '600':600,
+        '400':400
+
       },
       colors: {
         'primary': '#F7F3EE',
@@ -79,7 +98,22 @@ module.exports = {
         'primaryBlack':'#191919',
         'primaryYellow':'#ffdd00'
       },
-      
+      height: {
+        '365px': '22.813rem',
+        '195px': '12.188rem',
+      },
+      width: {
+        '365px': '22.813rem',
+        '195px': '12.188rem',
+      },
+    
+   
+    },
+    screens: {
+      'mb': {'min': '320px', 'max': '1024px'},
+      'tab': {'min': '800px', 'max': '1025px'},
+      'notmb':{'min':'1025px'}
+     
     },
   },
   plugins: [

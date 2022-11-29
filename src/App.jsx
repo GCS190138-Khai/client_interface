@@ -50,7 +50,7 @@ function App() {
   //   getAllEvent(dispatch) 
 
   // })
-  const width = window.innerWidth
+  
 
   useEffect(()=>{
     
@@ -87,25 +87,18 @@ if(isLoading){
     </div>
   )}else{
    
-    if(width<800 ){
-      alert('website hiện chưa hỗ trợ giao diện cho tablet và mobile,vui lòng mở rộng cửa sổ giao diện để view website')
-      return(
-        <> 
-        <div className='flex justify-center items-center  text-primaryBlack text-[3rem] w-screen h-screen'>
-        Website hiện chưa hỗ trợ giao diện cho tablet và mobile,vui lòng mở rộng cửa sổ giao diện để view website
-        </div>
-        </>
-      )
-    }else{
+   
 
       return (  
         <>
         <div  className="App"  ref={body}>
-      
+        <div className=' z-[1000]'>
+
           {eventCart.isOpen?<EventCart></EventCart>:""}
-          <div className=' z-50'>
+        </div>
+          {eventCart.isOpen?"":<div className=' z-10'>
           <Nabar></Nabar>
-          </div>
+          </div>}
           <div className=' -z-10'>
           {isStatic?<ShopCart></ShopCart>:""}
           {isBuySuccess?<Bought></Bought>:""}
@@ -124,7 +117,7 @@ if(isLoading){
           </>
       );
     }
-  }
+
 }
 
 export default App;

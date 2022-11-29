@@ -19,7 +19,7 @@ function aboutUs() {
       <Sct1Us/>
       <Sct2></Sct2>
       <Sct3></Sct3>
-      <Sct4></Sct4>
+      {/* <Sct4></Sct4> */}
     
   </div>
   );

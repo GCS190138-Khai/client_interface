@@ -74,3 +74,51 @@
   
 }
 
+
+@media (min-width: 320px) and (max-width: 801px) {
+    .container33{
+        .Upper{
+            align-items: flex-start;
+        }
+        .wrap{
+      
+            cursor: url('../../Asset/Image/drag.svg') ,auto !important ;
+      
+            height: 68vh;
+            width: 98%;
+            display: flex;
+         
+            overflow-x: auto;
+           flex-wrap: nowrap;
+            .Lower{
+       
+                height: 62vh;
+                width: fit-content;
+                
+                overflow-x: auto;
+                display: flex;
+                justify-content: space-between;
+            
+                .upper_logo{
+                 
+                    min-width: fit-content;
+                    
+                    display: flex;
+                    gap: 5.5vw;
+              
+                
+    
+                }
+                .lower_logo{
+                    min-width: fit-content;
+                    
+                    display: flex;
+                    gap: 5.5vw;
+                    align-items: flex-end;
+             
+                }
+            }
+        }
+    } 
+  }
+

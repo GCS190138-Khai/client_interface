@@ -5,18 +5,22 @@ import { Observer } from "gsap/Observer";
 import { useSelector ,useDispatch } from 'react-redux';
 import {Link, NavLink} from "react-router-dom"
 import { isOffNav, isOnNav, onStatic } from './redux/navSlice';
+import { useWindowWidth } from '@react-hook/window-size';
+
 gsap.registerPlugin( Observer);
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function () {
 
 
   const navTextColor = useSelector((state)=>state.nav.color.textColor)
+  
   const quantity = useSelector((state)=>state.nav.cart)
   const currentUser = useSelector((state)=>state.auth.login.currentUser)
-
+  const onlyWidth = useWindowWidth()
   const[  isOpen,setIsOpen] = useState(false)
   const[  isOpen2,setIsOpen2] = useState(false)
   const [isButton, setisButton] = useState(false)
+  const [isMobile, setisMobile] = useState(false)
   const helper2 = useRef(null)
   const menu = useRef(null)
   const Nav = useRef(null)
@@ -58,15 +62,28 @@ export default function () {
 // }
 ]
 )
+
+
+useEffect(()=>{
+ 
+ 
+          if(onlyWidth<1025){
+              setisMobile(true)
+          }else{
+              setisMobile(false)
+          }
+
+
+  
+
+},[onlyWidth])
+
 const goTop=()=>{
- 
-  gsap.to( window,{duration:1, scrollTo:{
-    y:0
-  }})
- 
+  
+  window.scrollTo(0,0)
 }
     
-    const button = ` h-[5vh]  ${navTextColor}  text-[1.1rem] font-button   rounded-lg  hover:bg-white-50 hover:${navTextColor}  `
+    const button = ` h-[5vh]  ${navTextColor}  text-[1.1rem]  font-button   rounded-lg  hover:bg-white-50 hover:${navTextColor}  `
     const buttonOpen = ` h-[5vh] text-[#FFFFFF] text-[1.1rem]  font-button   rounded-lg  hover:bg-white-50 hover:${navTextColor}  `
     const handleToggle = () => {
       
@@ -151,14 +168,26 @@ const goTop=()=>{
        
       
           gsap.to(Nav.current,{display:"flex"})
-        Observer.create({
-            id:"1",
-            target:window,
-            type:"wheel,touch,scroll",
-            onUp:()=>{show()},
-            onDown:()=>{hide()}
-            
-        })
+          if(isMobile){
+
+            Observer.create({
+                id:"1",
+                target:window,
+                type:"touch,scroll",
+                onUp:()=>{show()},
+                onDown:()=>{hide() }
+                
+            })
+          }else{
+            Observer.create({
+              id:"1",
+              target:window,
+              type:"wheel,scroll",
+              onUp:()=>{show()},
+              onDown:()=>{hide()}
+              
+          })
+          }
         
        
         return () => {  
@@ -166,10 +195,90 @@ const goTop=()=>{
           Observer.getById('1').kill()
           abort.abort();  
           }  
-      },[isOpen])
+      },[isOpen,isMobile])
+if(isMobile){
+  return (
+    <div ref={Nav}   className={"w-screen   fixed z-50"}>
+       
+<nav  className={"   bg-[transparent] fixed w-screen h-[70px] z-[100]   sm:px-0 "}  >
+     <div className=' h-[0] w-screen fixed flex flex-col ' ref={filter} >
+   
+            <div className='h-[0] w-[100vw] bg-[#191919] z-[100] fixed flex items-end ' ref={helper2} >
+                      {isOpen2?<div className=' gap-[7vh] mb:gap-[5rem] z-[100] flex flex-col bg-[#191919] px-[2%] mb:px-[20px] mb:h-[87vh]   h-[85vh] w-screen '>
+                            <div className='flex mb:flex-col mb:gap-[4.4rem] '>
+                                
+                                <ul className=' w-[50%] mb:w-full mb:flex mb:flex-col mb:gap-2  list-none'>
+                                    {pages.map((item)=>{return(<NavLink className={nav=>nav.isActive?"opacity-50 hover:text-primary text-[#F7F3EE]  " :" text-[#F7F3EE]  opacity-100 notmb:hover:text-primaryYellow"} onClick={()=>{handleToggle()
+                                    goTop()
+                                    }} key={item.title} to={item.link}><li className='leading-[12vh] mb:leading-[1.2] mb:text-30px mb:font-500 font-normal text-aTitle2Vw '>{item.title}</li></NavLink>)})} 
+                                </ul>
+                       
+                                <ul className='w-[50%] mb:w-full list-none'>
+                                {loggin.map((item)=>{return(<NavLink className={nav=>nav.isActive?"opacity-50 hover:text-primary text-[#F7F3EE]  " :" text-[#F7F3EE]  opacity-100 notmb:hover:text-primaryYellow"} onClick={()=>{handleToggle()
+                                    goTop()
+                                    }} key={item.title} to={item.link}><li className='leading-[12vh] mb:leading-[1.2] mb:text-30px mb:font-500 font-normal text-aTitle2Vw '>{currentUser?"Tài Khoản":item.title}</li></NavLink>)})}  
+                                    {currentUser?"":<li className={`text-[#F7F3EE] mb:mt-3 mt-[2vh] text-[0.8vw] mb:text-12px font-normal `}>{`(HOẶC`} <Link to={"/account/register"} ><u>ĐĂNG KÝ</u></Link> {`NẾU BẠN CHƯA CÓ TÀI KHOẢN)`} </li>}
+                                  
+                                </ul>
+                            </div>
+                            <div className=' flex items-end mb:h-fit h-[25vh] '>
+                                <div className='h-[7rem] w-[50%]'>
+                                <img className='h-[7rem] w-[7rem]  object-contain ' src={require('./Asset/Nav/logo.png')} alt="123" />
+                                </div>
+                                <div className='flex mb:text-12px mb:flex-col mb:items-start   items-end pb-[2.3vh] text-[0.8vw]  h-[7rem] justify-between  w-[40%] text-[#F7F3EE] '>
+                                <div className=' ' >
+                                  <div className=' mb:hidden'>STUDIO</div>
+       
+                                  <div className=' uppercase mb:hidden tab:hidden ' >ĐÀ LẠT, LÂM ĐỒNG</div>
+                                  <div className=' uppercase notmb:hidden '>Phố Bên Đồi</div>
+                                </div>
+                                  <div>
+                                  <div className=' mb:hidden'>OFFICE</div>
+                                  <div className=' uppercase mb:hidden tab:hidden '>TP.HỒ CHÍ MINH</div>
+                                  <div className=' uppercase notmb:hidden '>(+84) 97 411 0770</div>
+                                  </div>
+                                  <div>
+                                  <div className='flex gap-1 items-center'><u >INFO@PHOBENDOI.ART</u><img className='h-3 object-fill rounded-none w-3' src={require('./Asset/Nav/muitenButton.svg').default} alt="" /> </div>
+                                  <div className='flex gap-1 items-center'> <u >FACEBOOK</u> <img className='h-3 object-fill rounded-none w-3' src={require('./Asset/Nav/muitenButton.svg').default} alt="" /> </div>
+                                  </div>
+                                </div>
+                              
+                            </div>
+
+
+                      </div>:''}
+
+            </div>
+     </div>
+    <div className="flex px-[20px]  justify-between   h-[100%] items-center ">
+        <div className='flex gap-5 items-center    ' ref={menu}>
+          {!isOpen? <Link  to='/'><button className={`${button} mb:text-aCaption mb:text-600 z-10 `}>TRANG CHỦ</button></Link>:<Link onClick={handleToggle} to='/'><button className={`${buttonOpen} mb:text-600 mb:text-aCaption mb:text-600 z-10 `}>TRANG CHỦ</button></Link> }
+           
+        </div>
+  
+        <div className='flex min-w-[120px] justify-end gap-[58px]'ref={menu2} >
+           {/* {!isOpen? <button onClick={()=>dispacth(onStatic() )} className={`${button} flex items-center gap-1 `}> <span>GIỎ</span> {quantity.length===0?"":<span className='  font-[400] text-sm '>{quantity.length<10?`(0${quantity.length})`:`(${quantity.length})`}</span>}</button>:''} */}
+           {!isOpen? <button onClick={()=>dispacth(onStatic() )} className={navTextColor==="text-whiteText"?` w-[30px] h-[30px]  bg-cover items-center justify-center  bg-no-repeat bg-wcart flex  gap-1 relative `:` w-[30px] h-[30px]  bg-cover items-center justify-center  bg-no-repeat bg-cart flex  gap-1 relative `}>
+           {quantity.length===0?"":<span className={`${navTextColor}  font-[400] text-12px `}>{quantity.length<10?`0${quantity.length}`:`${quantity.length}`}</span>}
+</button>:''}
+            {!isOpen? <button disabled={isButton} onClick={()=>{
+              setisButton(true)
+              handleToggle()}} className={navTextColor==="text-whiteText"?`${button} bg-wmenu bg-no-repeat w-[30px] h-[30px] z-10 `:`${button} bg-menu bg-no-repeat w-[30px] h-[30px] z-10 `} ></button> : <button disabled={isButton} onClick={()=>{
+                setisButton(true)
+                handleToggle()}} className={`${buttonOpen} bg-closemenu bg-center bg-no-repeat w-[30px] h-[30px] z-10 `} ></button>}
+        </div>
+    </div>
+    
+
+</nav>
+
+
+    </div>
+  )
+}else{
 
   return (
-    <div ref={Nav}   className={"w-screen fixed z-50"}>
+    <div ref={Nav}   className={"w-screen   fixed z-50"}>
        
 <nav  className={"bg-[transparent] fixed w-screen h-[10vh] z-[100]   sm:px-0 "}  >
      <div className=' h-[0] w-screen fixed flex flex-col ' ref={filter} >
@@ -189,16 +298,13 @@ const goTop=()=>{
                                     goTop()
                                     }} key={item.title} to={item.link}><li className='leading-[12vh] font-normal text-aTitle2Vw '>{currentUser?"Tài Khoản":item.title}</li></NavLink>)})}  
                                     {currentUser?"":<li className={`text-[#F7F3EE] mt-[2vh] text-[0.8vw] font-normal `}>{`(HOẶC`} <Link to={"/account/register"} ><u>ĐĂNG KÝ</u></Link> {`NẾU BẠN CHƯA CÓ TÀI KHOẢN)`} </li>}
-                                    {currentUser.role==="1"?<NavLink onClick={()=>{handleToggle()
-                                    goTop()
-                                    }} className={"leading-[12vh] text-[#F7F3EE] font-normal text-aTitle2Vw"} to={"/adminPhobendoi"}>ADMIN</NavLink>:currentUser.role==="admin"?<NavLink onClick={()=>{handleToggle()
-                                      goTop()
-                                      }} className={"leading-[12vh] text-[#F7F3EE] font-normal text-aTitle2Vw"} to={"/adminPhobendoi"}>ADMIN</NavLink>:""}
+                                  
                                 </ul>
                             </div>
                             <div className=' flex items-end h-[25vh] '>
                                 <div className='h-[7rem] w-[50%]'>
-                                <img className='h-[7rem] w-[7rem]  object-contain ' src={require('./Asset/Nav/logo.png')} alt="123" />
+                                {/* <img className='h-[7rem] w-[7rem]  object-contain ' src={require('./Asset/Nav/logo.png')} alt="123" /> */}
+                                <div className='h-[7rem] bg-logo bg-no-repeat w-[7rem] '></div>
                                 </div>
                                 <div className='flex   items-end pb-[2.3vh] text-[0.8vw]  h-[7rem] justify-between  w-[40%] text-[#F7F3EE] '>
                                 <div className=' ' >
@@ -244,4 +350,5 @@ const goTop=()=>{
 
     </div>
   )
+}
 }

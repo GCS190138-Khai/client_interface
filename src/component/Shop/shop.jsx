@@ -121,17 +121,20 @@ useEffect(()=>{
      <div className=" w-screen h-auto  flex flex-col items-center justify-center  " >
            <div className=" relative w-screen h-[95vh]">
             <img className="  fixed -z-10 w-[100vw] object-center h-screen object-cover " src={require("./heropic.svg").default} alt="123" />
-            <div className=" fixed -z-[1] text-white items-center   flex  w-screen h-screen">
-                 <div className=" w-[10%]"> <img className=" h-[18vh] w-[10vw]" src={require("./arrow.svg").default} alt=" 123" /></div>
-                 <div className=" flex justify-center w-[40%] uppercase"> {`(studio sáng tạo)`} </div>
-                 <div className=" capitalize w-[50%] text-aTitle1 font-[600]"> 
-                   <div>Sản xuất bởi </div>
-                   <div className=" mt-[-4vh]">phố bên đồi</div>
+            <div className=" fixed -z-[1] text-white items-center mb:px-[20px]   flex  w-screen h-screen">
+                 <div className=" mb:hidden w-[20%]"> <img className=" h-[18vh] w-[10vw]" src={require("./arrow.svg").default} alt=" 123" /></div>
+                 <div className=" w-full mb:gap-1 flex flex-col">
+
+                 <div className=" flex   uppercase"> {`(studio sáng tạo)`} </div>
+                 <div className=" mb:text-12px mb:font-400 capitalize  text-aTitle1 font-[500]"> 
+                   <div className=" mb:text-28px">"design by community,</div>
+                   <div className="mb:text-28px mb:mt-[-0.5rem] mt-[-4vh]">for the community"</div>
+                 </div>
                    </div>   
             </div>
            </div>
-           <div className=" relative flex  rounded-t-[3.125rem] bg-primary pt-[25vh] h-auto w-screen">
-                   <div className=" sticky pl-[2%] pt-[32vh] top-[-22vh] w-[25%] overflow-y-auto h-screen   ">
+           <div className=" relative flex mb:rounded-t-[2.5rem] mb:flex-col  rounded-t-[3.125rem] bg-primary mb:pt-[6.25rem] pt-[25vh] h-auto w-screen">
+                   <div className=" mb:static mb:top-0 sticky mb:px-[20px] mb:h-fit mb:pb-[2.5rem] pl-[2%] pt-[32vh] top-[-22vh] mb:w-full mb:pt-0 w-[25%] overflow-y-auto h-screen   ">
                      <div className=" min-h-fit gap-[4vh] capitalize text-aPara font-[500] flex flex-col">
                       <div>
 
@@ -165,7 +168,7 @@ useEffect(()=>{
                       </div>
                      </div>
                    </div>
-                   <div className=" w-[75%]      ">
+                   <div className=" w-[75%] mb:w-full mb:px-[20px]     ">
                    <Outlet></Outlet>   
                    </div>
            </div>

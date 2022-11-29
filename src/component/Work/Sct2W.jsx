@@ -146,7 +146,7 @@ useEffect(()=>{
         setisAnim(true)
       } ,onComplete: ()=>{  setisAnim(false) }})
           tl.to(listArrow.current[index],{ rotate:"180deg",duration:0.5,ease: "back.out(4)" })
-          tl.to(listLower.current[index],{display:"flex",duration:0.5,height:"auto",paddingBottom:"14vh",ease: "back.out(4)"},"<")
+          tl.to(listLower.current[index],{display:"flex",height:"auto",paddingBottom:"14vh",ease: "back.out(4)"},"<")
           tl.to(listLower.current[index],{display:"flex",opacity:1,duration:0.5,ease: "back.out(4)"},)    
     }
     const reverse=(index)=>{
@@ -194,26 +194,26 @@ useEffect(()=>{
     }else{
 
       return (  
-         <div  className=" gap-[7vh] flex flex-col items-center  pt-[10vh] w-screen  ">
-          <div className="px-[2%] flex w-screen justify-center">
+         <div  className=" gap-[7vh] flex flex-col items-center mb:pt-[100px]  pt-[10vh] w-screen  ">
+          <div className="px-[2%] mb:hidden flex w-screen justify-center">
               <div className=" text-aCaption font-title2-caption">{`(NHẤN CHỌN ĐỂ XEM THÊM)`} </div>
           </div>
-          <div className="  translate-y-[-2vh]  flex text-aSubtitle font-title-Subtitle w-screen justify-center gap-[3vw]">
+          <div className="  translate-y-[-2vh] mb:translate-y-0 mb:text-28px mb:leading-[1] flex text-aSubtitle font-title-Subtitle w-screen justify-center gap-[3vw]">
            {tab ?<div     className=" cursor-pointer  border-b border-primaryBlack ">Dịch Vụ</div>:<div onClick={toggleTab}   className=" cursor-pointer opacity-50">Dịch Vụ</div>}
            {tab ? <div  onClick={toggleTab}   className=" cursor-pointer  opacity-50">Các Dự Án</div>:<div  className=" cursor-pointer  border-b border-primaryBlack">Các Dự Án</div>}
           </div>
-          {tab?<div className=" gap-[5vh] py-[1%] px-[2%] flex flex-col w-screen h-[auto] ">
+          {tab?<div className=" mb:gap-[3vh] gap-[5vh] py-[1%] mb:px-[20px] px-[2%] flex flex-col w-screen h-[auto] ">
             {
               newList.map((item,index)=>{
                 
                 return(
-                  <div key={index}  ref={e=>(listElements.current[index]=e)} className="  cursor-pointer gap-[4.8vh] pb-[4.5vh] flex flex-col border-b-2 border-primaryBlack ">
+                  <div key={index}  ref={e=>(listElements.current[index]=e)} className=" mb:pb-[3vh]  cursor-pointer gap-[4.8vh] pb-[4.5vh] flex flex-col border-b border-primaryBlack ">
                     <div onClick={()=>{
                     handleToggle(index)
-                  }} className="flex h-[28.8vh]   items-center">
-                      <div className="  w-[10%] translate-y-[-1.5rem] text-aCaption font-title2-caption"> {index+1<10?`0${index+1}`:`${index+1}`} </div>
-                      <div className=" w-[75.8%] text-aTitle1 font-[600]" > {item.title}</div>
-                      <div className=" rotate-180  justify-self-end "> <img ref={e=>(listArrow.current[index]=e)} src={require('../../Asset/work/arrowup.png')} alt="error" /></div>
+                  }} className="flex h-[28.8vh] mb:h-fit   items-center">
+                      <div className=" mb:translate-y-0  w-[10%] translate-y-[-1.5rem] mb:text-12px  text-aCaption font-title2-caption"> {index+1<10?`0${index+1}`:`${index+1}`} </div>
+                      <div className=" mb:text-28px w-[75.8%] text-aTitle1 font-[500]" > {item.title}</div>
+                      <div className=" mb:hidden rotate-180  justify-self-end "> <img ref={e=>(listArrow.current[index]=e)} src={require('../../Asset/work/arrowup.png')} alt="error" /></div>
                     </div>
                     <div ref={e=>(listLower.current[index]=e)} className=" hidden h-[0] ">
                       <div className=" w-[10vw] "></div>
@@ -283,12 +283,12 @@ useEffect(()=>{
               })
             }
           </div>: 
-        <div className=" hidden py-[1%] px-[1%]  flex-col w-screen h-[auto] ">
+        <div className=" hidden py-[1%] px-[1%]   flex-col w-screen h-[auto] ">
         {
           list.map((item,index)=>{
             
             return(
-              <div key={index}  ref={e=>(listElements.current[index]=e)} className="  cursor-pointer gap-[5vh] flex flex-col border-b-2 border-primaryBlack ">
+              <div key={index}  ref={e=>(listElements.current[index]=e)} className="  cursor-pointer gap-[5vh] flex flex-col border-b border-primaryBlack ">
                 <div onClick={()=>{
                 handleToggle(index)
               }} className="flex   items-center">
@@ -319,7 +319,7 @@ useEffect(()=>{
                 
                   return(
                     <div key={index+2} id={index}  ref={e=>(listProjects.current[index]=e)} className=" flex w-[0] opacity-0  ">
-                    <div  className="  group hover:h-[45vh] group-hover:ease-bounced duration-700  cursor-pointer h-[20vh] w-[98%]   flex flex-col border-b-2 border-primaryBlack ">
+                    <div  className="  group hover:h-[45vh] group-hover:ease-bounced duration-700  cursor-pointer h-[20vh] w-[98%]   flex flex-col border-b border-primaryBlack ">
                       <div className="flex items-start">
                     
     
@@ -347,17 +347,17 @@ useEffect(()=>{
             }
           
     
-          </div>:<div  className=" pt-[10vh] flex flex-col gap-[7vh]  items-center   h-[fit] w-screen">
+          </div>:<div  className=" pt-[10vh] flex flex-col gap-[7vh] mb:px-[20px]  items-center   h-[fit] w-screen">
       
           {
              
              listPro?.map((item,index)=>{
              
                return(
-                 <div onClick={()=>handDirect(index)} key={index+2} id={index}  ref={e=>(listProjects.current[index]=e)} className=" flex justify-center  w-[100vw] opacity-1  ">
+                 <div onClick={()=>handDirect(index)} key={index+2} id={index}  ref={e=>(listProjects.current[index]=e)} className=" flex justify-center mb:w-full  w-[100vw] opacity-1  ">
                  {index===4?
                 //  Do thi Vn
-                 <div  className=" delay-500  group hover:h-[50vh] group-hover:ease-in-out duration-700  cursor-pointer h-[32vh] w-[96%] hover:pt-[7vh]   flex flex-col border-b-2 border-primaryBlack ">
+                 <div  className=" delay-500  group hover:h-[50vh] group-hover:ease-in-out duration-700  cursor-pointer h-[32vh] w-[96%] hover:pt-[7vh]   flex flex-col border-b border-primaryBlack ">
                  <div className="flex items-start">
                
 
@@ -365,13 +365,13 @@ useEffect(()=>{
                    <div className=" w-[0%] flex delay-500  duration-500 justify-start group-hover:w-[18%]  "><img className=" w-0 h-[5vw] delay-500 group-hover:w-[200px] duration-700 rounded-[20px] group-hover:h-[200px]  object-cover " src={item.picHero} alt="error" /> </div>
                    <div className=" w-[60%] text-aTitle2   flex flex-col  font-title-Subtitle" > 
                      <div className=" flex">
-                       <div className=" capitalize leading-[1.2] relative ">{item.name} <span className=" absolute mt-[-1vh] text-aPara font-p">{item.year}</span> </div>
+                       <div className=" capitalize leading-[1.2] relative  w-[84%] ">{item.name} <span className=" absolute mt-[-1vh] text-aPara font-p">{item.year}</span> </div>
                        
                      </div>
                    <div className="spacer delay-500 h-[0vh]  duration-700 group-hover:opacity-100 group-hover:h-[4vh] w-[100%]" ></div>
                    <div  className=" opacity-0 flex delay-500  duration-700 group-hover:opacity-100 translate-y-[-7vh] group-hover:translate-y-[0] justify-between w-[100%] uppercase text-aCaption  font-title2-caption" >
 
-                   <div className=" capitalize w-[80vw] ">{item.title}</div>
+                   <div className="  capitalize w-[80vw] ">{item.title}</div>
                    </div>
                    </div>
                
@@ -379,19 +379,20 @@ useEffect(()=>{
                  </div>
                </div>
                  :
-                 <div  className=" delay-500  group hover:h-[42vh] group-hover:ease-in-out duration-700  cursor-pointer h-[20vh] w-[96%] hover:pt-[3vh]   flex flex-col border-b-2 border-primaryBlack ">
+                 <div  className=" delay-500 group hover:h-[42vh] group-hover:ease-in-out duration-700 mb:h-[10rem] mb:w-full  cursor-pointer h-[20vh] w-[96%] hover:pt-[3vh] 
+                   flex flex-col border-b border-primaryBlack ">
                    <div className="flex items-start">
                  
  
-                     <div className="  w-[10%] pt-[7.5vh]  delay-500 duration-500 group-hover:pt-[10vh] text-aCaption font-title2-caption"> {index+1<10?`0${index+1}`:`${index+1}`} </div>
-                     <div className=" w-[0%] flex delay-500  duration-500 justify-start group-hover:w-[18%]  "><img className=" w-0 h-[5vw] delay-500 group-hover:w-[200px] duration-700 rounded-[20px] group-hover:h-[200px]  object-cover " src={item.picHero} alt="error" /> </div>
-                     <div className=" w-[70%] text-aTitle2   flex flex-col  font-title-Subtitle" > 
+                     <div className="  w-[10%] pt-[7.5vh]  delay-500 duration-500 group-hover:pt-[10vh] text-aCaption mb:text-12px font-title2-caption"> {index+1<10?`0${index+1}`:`${index+1}`} </div>
+                     <div className=" w-[0%] flex delay-500 mb:hidden  duration-500 justify-start group-hover:w-[18%]  "><img className=" w-0 h-[5vw] delay-500 group-hover:w-[200px] duration-700 rounded-[20px] group-hover:h-[200px]  object-cover " src={item.picHero} alt="error" /> </div>
+                     <div className=" w-[70%] mb:w-full text-aTitle2   flex flex-col  font-title-Subtitle" > 
                        <div className=" flex">
-                         <div className=" capitalize ">{item.name} </div>
-                         <span className=" text-aPara font-p">{item.year}</span>
+                         <div className=" capitalize mb:text-28px mb:w-full ">{item.name} </div>
+                         <span className=" text-aPara font-p mb:text-16px ">{item.year}</span>
                        </div>
-                     <div className="spacer delay-500 h-[0vh]  duration-700 group-hover:opacity-100 group-hover:h-[11vh] w-[100%]" ></div>
-                     <div  className=" opacity-0 flex delay-500  duration-700 group-hover:opacity-100 translate-y-[-7vh] group-hover:translate-y-[0] justify-between w-[100%] uppercase text-aCaption  font-title2-caption" >
+                     <div className="spacer delay-500 h-[0vh] mb:hidden  duration-700 group-hover:opacity-100 group-hover:h-[11vh] w-[100%]" ></div>
+                     <div  className=" opacity-0 flex delay-500 mb:opacity-100 duration-700 group-hover:opacity-100 translate-y-[-7vh] group-hover:translate-y-[0] justify-between w-[100%] uppercase text-aCaption  font-title2-caption" >
 
                      <div className=" capitalize w-[80vw] ">{item.title}</div>
                      </div>
@@ -400,7 +401,7 @@ useEffect(()=>{
                     
                    </div>
                  </div>}
-                 <div className="z-[-1]  w-[80.5vw] absolute flex justify-end "> <img className="rotate-[45deg]"  src={require('../../Asset/work/arrowup.png')} alt="error" /></div>
+                 <div className="z-[-1] mb:hidden  w-[97.5vw] absolute flex justify-end "> <img className="rotate-[45deg]"  src={require('../../Asset/work/arrowup.png')} alt="error" /></div>
                  </div>
                )
              })

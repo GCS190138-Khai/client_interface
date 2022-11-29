@@ -14,6 +14,10 @@ import { getOneEvent } from "../../selector";
 import { useLayoutEffect } from "react";
 import { useUpdateEffect } from "../Shop/shop";
 import gsap from "gsap";
+import { format } from "date-fns";
+import { parseISO } from "date-fns/esm";
+import { vi } from "date-fns/locale";
+import ReadQuillEditor from "../../Util/ReadOnlyEditor";
 
 function EventDetail() {
 
@@ -86,51 +90,17 @@ useUpdateEffect(()=>{
 
  
       
-    const dateWeek =(date)=>{
-      const days = ["Chủ Nhật", "Thứ Hai", "Thứ ba", "thứ tư", "thứ năm", "thứ sáu", "thứ bảy"];
-     
-      return days[date]
-    }
-    const dateMonth =(month)=>{
-      
-     
-    
-      return  month+1>10?`.${month+1}`:`.0${month+1}`
-    }
-    const dateMonthForSelect =(month)=>{
-      
-     
-    
-      return  month+1>10?`.${month+1}`:`0${month+1}`
-    }
-    
-    const dateHours =(hours,min)=>{
 
-       return `${hours}h${min<10?`0${min}`:min}`
-    }
+
+    
+
   
    
   // arr.length
-  const date =new Date(event.startDate)
 
-  const selecterObject=( arr )=>{
-    let newSelector=[]
 
-    arr?.map((item,i)=>{
-      return newSelector.push({...item,value:item._id,label:`${new Date(item.dateStart).getDate()}/${dateMonthForSelect(new Date(item.dateStart).getMonth())}/${new Date(item.dateStart).getFullYear()}`})
-    })
-    return newSelector
 
-  }
-  const selecterObjectForHangGhe=( arr )=>{
-    let newSelector=[]
 
-    arr?.map((item,i)=>{
-      return newSelector.push({...item,value:item._id,label:item?.name})
-    })
-    return newSelector
-
-  }
   const handleEventCart=(event)=>{
       if(!currentUser){
         navigate('/account')
@@ -138,15 +108,7 @@ useUpdateEffect(()=>{
       dispatch(onEventCart(event))
 
   }
-  const selecterTime=( arr )=>{
-    let newSelector=[]
 
-    arr?.map((item,i)=>{
-      return newSelector.push({...item,value:item._id,label:item?.timeRange})
-    })
-    return newSelector
-
-  }
 
 
   
@@ -161,37 +123,35 @@ useUpdateEffect(()=>{
 
     return ( 
   
-      <div className=" h-[auto] flex pt-[15vh]  px-[10%]  flex-col items-center w-screen bg-primary ">
+      <div className=" h-[auto] flex pt-[15vh] mb:px-0  px-[10%]  flex-col items-center w-screen bg-primary ">
       
       
       
         <div className="   w-[100%] h-[auto]  flex flex-col  " >
-        <div onClick={()=>navigate(-1)} className=" cursor-pointer min-w-[12%] items-center flex gap-3">
+        <div onClick={()=>navigate(-1)} className=" mb:px-[20px]  cursor-pointer min-w-[12%] items-center flex gap-2">
          <span className=" flex items-center justify-center "> 
-         <img src={require("./ar.png")} alt="error" className=" object-contain h-[18px] w-[18px] " /> 
+         <img src={require("./ar.png")} alt="error" className=" object-contain mb:h-[1rem] mb:w-[1rem]  h-[1.125rem] w-[1.125rem] " /> 
          </span> 
-         <span className="   text-aCaption font-normal uppercase ">{`quay lại ${tab||"tất cả"}`} <div className=" border-t-[1px] mt-[-0.4vh] border-primaryBlack w-[100%]" ></div></span>
+         <span className=" mb:text-12px    text-aCaption font-normal uppercase ">{`quay lại ${tab||"tất cả"}`} <div className=" border-t-[1px] mt-[-0.4vh] border-primaryBlack w-[100%]" ></div></span>
         </div>
-        <div className=" flex justify-between flex-col w-[100%]  mt-[10vh] h-[60vh]">
+        <div className=" mb:pb-[3.75rem] mb:px-[20px]  flex notmb:justify-between mb:gap-[2.5rem] flex-col w-[100%] mb:mt-[3.75rem] mb:h-fit  mt-[10vh] h-[60vh]">
   
-        <div className=" w-[100%] capitalize text-aTitle2 font-[500] indent-[-0.3vw] " >{`${event.name}`}  </div>
-        <div className=" flex text-aCaption uppercase h-[35%]   ">
-          <div className=" w-[20%]  ">
+        <div className=" w-[100%] capitalize leading--[1.2] text-aTitle2 mb:text-28px font-[500] indent-[-0.3vw] " >{`${event.name}`}  </div>
+        <div className=" mb:flex-col flex text-aCaption uppercase mb:h-fit mb:gap-[1.25rem] h-[35%]   ">
+          <div className=" w-[20%] mb:w-full  ">
             <div className=" font-[600] pb-2">thời gian</div>
             <div className="flex text-aCaption font-title2-caption" >
-            <div className=" ">{dateWeek( date.getDay())}</div> 
-                <div>-{ date.getDate()<10?`0${date.getDate()}`:date.getDate()}</div> 
-                <div>{dateMonth( date.getMonth())}</div> 
-                <div>.{ date.getFullYear()}</div> 
+            <div className=" "> { format( parseISO(event.startDate),"EEEE-dd.MM.yyyy" ,{locale: vi})} </div> 
+               
     
             </div>
-                <div className="text-aCaption font-title2-caption">{dateHours( date.getHours()+event.startHour, date.getMinutes()+event.startMin)}</div> 
+                <div className="text-aCaption font-title2-caption">{`${event.startHour<10?`0${event.startHour}`:`${event.startHour}`}h${event.startMin<10?`0${event.startMin}`:`${event.startMin}`}`}</div> 
           </div>
-          <div className=" w-[32%]  ">
+          <div className=" w-[32%] mb:w-full  ">
           <div className=" font-[600] pb-2">Địa điểm</div>
-          <div className="  w-[90%]" > {event.address} </div>
+          <div className=" mb:w-full  w-[90%]" > {event.address} </div>
           </div>
-          <div className=" w-[24%]  ">
+          <div className=" w-[24%] mb:w-full  ">
           <div className=" font-[600] pb-2">Giá vé</div>
           <div>
             {event?.dateRange[0].tickets.map((item,i)=>{
@@ -208,31 +168,26 @@ useUpdateEffect(()=>{
           </div>
           </div>
   
-          <div className=" w-[25%]  flex justify-end ">
-              <button onClick={()=>handleEventCart(event)} className=" gap-2 border-[1px] text-aPara font-medium flex justify-center items-center h-[12vh] border-primaryBlack rounded-lg   uppercase w-[18vw] "> đăng ký tham dự  </button>
+          <div className=" mb:pt-[1.25rem] w-[25%] mb:w-full  flex justify-end ">
+              <button onClick={()=>handleEventCart(event)} className=" gap-2 border-[1px] text-aPara font-medium flex justify-center items-center h-[12vh] border-primaryBlack rounded-lg mb:w-full   uppercase w-[18vw] "> đăng ký tham dự  </button>
           </div>
   
         </div>
         </div>
-         <div className="  h-[auto] w-[100%]  "> <img className=" rounded-[20px] object-cover w-[100%] h-[100vh] object-center " src={event.heroPic} alt="" /> </div>
-         <div className=" mt-[12vh] h-[auto] py-[5%] flex">
-          <div className=" text-aCaption font-title2-caption uppercase w-[40%] "> {`(Về sự kiện)`} </div>
-          <div className="text-aPara gap-[5vh] flex flex-col   font-p w-[60%]">
-            {event.discription?.map((item,i)=>{
-              return(
-                <div style={{ wordWrap: "break-word" }} key={i} className="  break-words whitespace-pre-wrap w-[100%]" >
-                <p  className=" ">{item}</p>  
-              </div>
-              )
-            })}
+         <div className=" mb:w-screen   h-[auto] w-[100%]  "> <img className=" mb:rounded-none rounded-[20px] mb:h-[32.188rem] object-cover w-[100%] h-[100vh] object-center " src={event.heroPic} alt="" /> </div>
+         <div className=" mb:px-[20px] mt-[12vh] mb:py-0 mb:mt-[3.75rem]  h-[auto] py-[5%] mb:flex-col flex">
+          <div className=" text-aCaption font-title2-caption mb:text-12px uppercase w-[40%] "> {`(Về sự kiện)`} </div>
+          <div className="text-aPara gap-[5vh] flex flex-col mb:w-full mb:text-16px   font-p w-[60%]">
+          <ReadQuillEditor full={true} className=" break-words w-full" value={event.discription}></ReadQuillEditor>
+          
           </div>
          </div>
-         <div className=" pb-[20vh] h-[auto] pt-[10vh] py-[5%] flex">
-          <div className=" text-aCaption font-title2-caption uppercase w-[40%] "> {`(với sự tham gia của)`} </div>
-          <div className="text-aPara flex flex-col gap-[3vh] font-[500]  w-[60%]">
+         <div className=" mb:px-[20px] mb:py-0 mb:pt-[3.75rem] pb-[20vh] h-[auto] mb:gap-[1.25rem] pt-[10vh] mb:pb-[6.25rem] mb:flex-col py-[5%] flex">
+          <div className=" text-aCaption font-title2-caption mb:text-12px uppercase mb:w-full w-[40%] "> {`(với sự tham gia của)`} </div>
+          <div className="text-aPara flex flex-col mb:gap-[0.313rem] gap-[3vh] mb:text-16px font-[500] mb:w-full  w-[60%]">
             {event.artist?.map((item,i)=>{
               return(
-                <div key={i} className=" h-[7vh] border-b-[1px] border-black  w-[100%]" >
+                <div key={i} className=" h-[7vh] mb:h-fit mb:pb-[0.313rem] mb:leading-[1] border-b-[1px] border-black  w-[100%]" >
                   {item}
               </div>
               )

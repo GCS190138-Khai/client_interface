@@ -14,6 +14,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Observer } from "gsap/Observer";
 import Section1 from './Sct1'
 import Section2 from './Sct2'
+import { useWindowWidth } from "@react-hook/window-size"
+import Section2MB from "./Sct2MB"
  
 
  
@@ -27,7 +29,7 @@ gsap.registerPlugin(ScrollTrigger, Observer ,Flip);
 
 function Mainpage (){
 
-
+const thisWidth = useWindowWidth()
    
    
 
@@ -40,7 +42,7 @@ function Mainpage (){
         <Section1   ></Section1>
         </div>
   
-        <Section2></Section2>   
+       {thisWidth<1024? <Section2MB></Section2MB>  :<Section2></Section2> }  
  
         <div className="   " >
         
